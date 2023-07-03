@@ -4,29 +4,31 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    CharacterController controller;
+    Player player;
     PlayerInputActions input;
-    Vector3 gravity = Vector3.zero;
+    CharacterController controller;
+
 
     [SerializeField] Camera cam;
     [SerializeField] GameObject playerBody;
 
     private Vector3 finalDirection;
     private Vector3 cameraDirection;
+    private Vector3 gravity = Vector3.zero;
 
-    [SerializeField] private int walkingSpeed;
-    [SerializeField] private int runningSpeed;
-    [SerializeField] private int rotationSpeed;
-    [SerializeField] private int jumpHeight;
+    private int rotationSpeed = 720;
+    private int jumpHeight = 5;
 
-    [SerializeField] private bool isGrounded;
-    private bool isRunning;
+    [SerializeField] public bool isGrounded;
+    [SerializeField] public bool isRunning;
 
 
     private void Awake()
     {
-        controller = GetComponent<CharacterController>();
+        player = GetComponent<Player>();
         input = new PlayerInputActions();
+        controller = GetComponent<CharacterController>();
+
     }
     private void OnEnable()
     {
@@ -46,21 +48,23 @@ public class PlayerMovement : MonoBehaviour
         HandleRotation();
     }
 
-
     void HandleDataEachFrame()
     {
         //better check
         isGrounded = controller.isGrounded;
         isRunning = input.Player.Sprint.ReadValue<float>() == 1 ? true : false;
     }
+
     private void HandleRotation()
     {
         if (finalDirection != Vector3.zero)
         {
+            Debug.Log("rotate");
             Quaternion desiredRotation = Quaternion.LookRotation(finalDirection, Vector3.up);
             playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
     private void HandleMovement()
     {
         Vector2 inputDirection = input.Player.Movement.ReadValue<Vector2>();
@@ -69,17 +73,15 @@ public class PlayerMovement : MonoBehaviour
 
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
-        
 
-        if(isRunning && isGrounded)
+        if (isRunning && isGrounded)
         {
-            controller.Move((finalDirection * runningSpeed + gravity) * Time.deltaTime);
+            controller.Move((finalDirection * player.runningSpeed.Value + gravity) * Time.deltaTime);
         }
         else
         {
-            controller.Move((finalDirection * walkingSpeed + gravity) * Time.deltaTime);
+            controller.Move((finalDirection * player.walkingSpeed.Value + gravity) * Time.deltaTime);
         }
-
     }
 
     void HandleJump()
@@ -90,13 +92,12 @@ public class PlayerMovement : MonoBehaviour
             if (input.Player.Jump.WasPressedThisFrame())
             {
                 gravity.y = jumpHeight;
-                Debug.Log("I WANT TO JUMP");
             }
         }
     }
+
     void HandleGravity()
     {
         gravity.y += Physics.gravity.y * Time.deltaTime;
     }
-
 }
