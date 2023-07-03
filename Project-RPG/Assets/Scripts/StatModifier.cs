@@ -7,14 +7,14 @@ using UnityEngine;
 public enum StatModifierType
 {
     Flat,
-    PecentageAdditive,
+    Percent,
 }
 
 [Serializable]
 public class StatModifier
 {
     [SerializeField] public int value;
-    [SerializeField] private StatModifierType type;
+    [SerializeField] public StatModifierType type;
 
     public StatModifier(int value, StatModifierType type)
     {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Collectible : MonoBehaviour
 {
-    StatModifier statModifier = new StatModifier(10, StatModifierType.Flat);
+    public StatModifier statModifier;
     AudioSource collectSound;
 
     private void Awake()

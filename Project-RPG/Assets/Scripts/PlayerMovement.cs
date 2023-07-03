@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 gravity = Vector3.zero;
 
     private int rotationSpeed = 720;
-    private int jumpHeight = 5;
+    private int jumpHeight = 7;
 
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;

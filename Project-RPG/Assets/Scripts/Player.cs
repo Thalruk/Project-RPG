@@ -5,6 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+    [Header("Stats")]
     [SerializeField] public  Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
     private void Awake()
@@ -16,8 +17,4 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
-    void Update()
-    {
-        Debug.Log(walkingSpeed.Value);    
-    }
 }

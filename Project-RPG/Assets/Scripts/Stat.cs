@@ -29,14 +29,42 @@ public class Stat
 
         foreach (StatModifier modifier in statModifiers)
         {
-            finalValue += modifier.value;
+            switch (modifier.type)
+            {
+                case StatModifierType.Flat:
+                    finalValue += modifier.value;
+                    break;
+                case StatModifierType.Percent:
+                    finalValue = Mathf.RoundToInt(finalValue * (1 + modifier.value/100f));
+                    break;
+                default:
+                    break;
+            }
         }
-
+        Debug.Log($"{finalValue}");
         return finalValue;
     }
 
     public void AddModifier(StatModifier modifier)
     { 
         statModifiers.Add(modifier);
+        Sort();
+    }
+
+    public bool RemoveModifier(StatModifier modifier)
+    {
+        bool result =  statModifiers.Remove(modifier);
+        Sort();
+        return result;
+    }
+
+    private void Sort()
+    {
+        statModifiers.Sort(SortMethod);
+    }
+
+    private int SortMethod(StatModifier firstMod, StatModifier secondMod)
+    {
+        return firstMod.type.CompareTo(secondMod.type);
     }
 }
