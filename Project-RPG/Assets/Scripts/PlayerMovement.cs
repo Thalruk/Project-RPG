@@ -21,6 +21,7 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;
+    [SerializeField] public bool isJumping;
 
 
     private void Awake()
@@ -74,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
 
-        if (isRunning && isGrounded)
+        if (isRunning && !isJumping)
         {
             controller.Move((finalDirection * player.runningSpeed.Value + gravity) * Time.deltaTime);
         }
@@ -88,10 +89,12 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
+            isJumping = false;
             gravity.y = -0.5f;
             if (input.Player.Jump.WasPressedThisFrame())
             {
                 gravity.y = jumpHeight;
+                isJumping = true;
             }
         }
     }
