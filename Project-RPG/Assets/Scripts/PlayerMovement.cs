@@ -40,10 +40,10 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         HandleDataEachFrame();
-        HandleRotation();
-        HandleMovement();
         HandleGravity();
         HandleJump();
+        HandleMovement();
+        HandleRotation();
     }
 
 
@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
     }
     private void HandleRotation()
     {
-        if(finalDirection != Vector3.zero)
+        if (finalDirection != Vector3.zero)
         {
             Quaternion desiredRotation = Quaternion.LookRotation(finalDirection, Vector3.up);
             playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
@@ -69,29 +69,34 @@ public class PlayerMovement : MonoBehaviour
 
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
-        if (isGrounded && input.Player.Jump.WasPressedThisFrame())
+        
+
+        if(isRunning && isGrounded)
         {
-            gravity.y = jumpHeight;
-            Debug.Log("I WANT TO JUMP");
+            controller.Move((finalDirection * runningSpeed + gravity) * Time.deltaTime);
+        }
+        else
+        {
+            controller.Move((finalDirection * walkingSpeed + gravity) * Time.deltaTime);
         }
 
-        controller.Move((finalDirection * walkingSpeed + gravity) * Time.deltaTime);
     }
 
     void HandleJump()
     {
-     
+        if (isGrounded)
+        {
+            gravity.y = -0.5f;
+            if (input.Player.Jump.WasPressedThisFrame())
+            {
+                gravity.y = jumpHeight;
+                Debug.Log("I WANT TO JUMP");
+            }
+        }
     }
     void HandleGravity()
     {
-        if (isGrounded)
-        {
-            gravity.y = -0.1f;
-        }
-        else
-        {
-            gravity.y += Physics.gravity.y * Time.deltaTime;
-        }
+        gravity.y += Physics.gravity.y * Time.deltaTime;
     }
-   
+
 }
