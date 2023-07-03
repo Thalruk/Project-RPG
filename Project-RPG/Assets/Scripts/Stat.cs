@@ -34,4 +34,9 @@ public class Stat
 
         return finalValue;
     }
+
+    public void AddModifier(StatModifier modifier)
+    { 
+        statModifiers.Add(modifier);
+    }
 }
