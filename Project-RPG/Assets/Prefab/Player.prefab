@@ -48,10 +48,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   walkingSpeed:
-    value: 5
+    baseValue: 5
     statModifiers: []
   runningSpeed:
-    value: 10
+    baseValue: 10
     statModifiers: []
 --- !u!143 &6890390649637282675
 CharacterController:

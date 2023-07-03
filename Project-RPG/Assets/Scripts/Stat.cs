@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Stat
 {
-    [SerializeField] private int value;
+    [SerializeField] private int baseValue;
     public int Value 
     { 
         get
@@ -19,13 +19,13 @@ public class Stat
 
     public Stat() 
     {
-        value = 0;
+        baseValue = 0;
         statModifiers = new List<StatModifier>();
     }
 
     private int CalculateFinalValue()
     {
-        int finalValue = 0;
+        int finalValue = baseValue;
 
         foreach (StatModifier modifier in statModifiers)
         {
