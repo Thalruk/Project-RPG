@@ -47,6 +47,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7f835f620af7e346bfb1a681367e3af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  health:
+    maxValue:
+      baseValue: 100
+      statModifiers: []
+    currentValue: 100
+    regenValue:
+      baseValue: 1
+      statModifiers: []
+  mana:
+    maxValue:
+      baseValue: 100
+      statModifiers: []
+    currentValue: 0
+    regenValue:
+      baseValue: 1
+      statModifiers: []
+  stamina:
+    maxValue:
+      baseValue: 100
+      statModifiers: []
+    currentValue: 0
+    regenValue:
+      baseValue: 5
+      statModifiers: []
   walkingSpeed:
     baseValue: 5
     statModifiers: []

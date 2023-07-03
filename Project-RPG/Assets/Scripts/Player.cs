@@ -5,9 +5,17 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     public static Player Instance;
+
     [Header("Stats")]
+    [SerializeField] public ChangeableStat health;
+    [SerializeField] public ChangeableStat mana;
+    [SerializeField] public ChangeableStat stamina;
+
+    [Space(10)]
+    [Header("Bonus Stats")]
     [SerializeField] public  Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
+
     private void Awake()
     {
         if(Instance != null && Instance != this)
@@ -17,4 +25,8 @@ public class Player : MonoBehaviour
         Instance = this;
     }
 
+    private void Update()
+    {
+        health.Increase(health.regenValue.Value * Time.deltaTime);
+    }
 }
