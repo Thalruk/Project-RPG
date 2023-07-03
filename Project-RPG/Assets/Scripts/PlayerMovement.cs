@@ -11,6 +11,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] Camera cam;
     [SerializeField] GameObject playerBody;
+    [SerializeField] GameObject groundCheck;
+    [SerializeField] float groundCheckDistance;
 
     private Vector3 finalDirection;
     private Vector3 cameraDirection;
@@ -102,5 +104,10 @@ public class PlayerMovement : MonoBehaviour
     void HandleGravity()
     {
         gravity.y += Physics.gravity.y * Time.deltaTime;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(groundCheck.transform.position, groundCheck.transform.position + Vector3.down * groundCheckDistance);
     }
 }

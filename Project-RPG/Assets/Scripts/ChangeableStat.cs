@@ -3,20 +3,45 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class ChangeableStat
 {
     [SerializeField] public Stat maxValue;
-    [SerializeField] public float currentValue;
+    [SerializeField] private int currentValue;
     [SerializeField] public Stat regenValue;
+    public UnityEvent<int> OnValueChanged;
 
-    public void Increase(float value)
+    public int CurrentValue
     {
-        currentValue = Math.Clamp(currentValue + value, 0, maxValue.Value);
+        get 
+        { 
+            return currentValue;
+        }
+        set
+        {
+            currentValue = value;
+            OnValueChanged?.Invoke(currentValue);
+            Debug.Log("invoked");
+        }
     }
-    public void Decrease(float value)
+
+    public void Increase(int value)
     {
-        currentValue = Math.Clamp(currentValue - value, 0, maxValue.Value);
+        CurrentValue = Math.Clamp(currentValue + value, 0, maxValue.Value);
+    }
+    public void Decrease(int value)
+    {
+        CurrentValue = Math.Clamp(currentValue - value, 0, maxValue.Value);
+    }
+
+    public IEnumerator Regenerate()
+    {
+        while (true)
+        {
+            Increase(regenValue.Value);
+            yield return new WaitForSeconds(1);
+        }
     }
 }

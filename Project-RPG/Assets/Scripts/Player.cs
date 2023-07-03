@@ -13,20 +13,20 @@ public class Player : MonoBehaviour
 
     [Space(10)]
     [Header("Bonus Stats")]
-    [SerializeField] public  Stat walkingSpeed;
+    [SerializeField] public Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
+
 
     private void Awake()
     {
-        if(Instance != null && Instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(Instance);
         }
         Instance = this;
-    }
 
-    private void Update()
-    {
-        health.Increase(health.regenValue.Value * Time.deltaTime);
+        StartCoroutine(health.Regenerate());
+        StartCoroutine(mana.Regenerate());
+        StartCoroutine(stamina.Regenerate());
     }
 }

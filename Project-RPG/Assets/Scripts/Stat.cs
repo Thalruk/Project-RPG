@@ -7,11 +7,18 @@ using UnityEngine;
 public class Stat
 {
     [SerializeField] private int baseValue;
+    private int _value;
+    private bool isDirty = true;
     public int Value 
     { 
         get
         { 
-            return CalculateFinalValue();
+            if(isDirty)
+            {
+                _value = CalculateFinalValue();
+                isDirty = false;
+            }
+            return _value;
         }
     }
 
@@ -41,18 +48,19 @@ public class Stat
                     break;
             }
         }
-        Debug.Log($"{finalValue}");
         return finalValue;
     }
 
     public void AddModifier(StatModifier modifier)
-    { 
+    {
+        isDirty = true;
         statModifiers.Add(modifier);
         Sort();
     }
 
     public bool RemoveModifier(StatModifier modifier)
     {
+        isDirty = true;
         bool result =  statModifiers.Remove(modifier);
         Sort();
         return result;
