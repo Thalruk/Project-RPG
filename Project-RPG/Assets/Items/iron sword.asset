@@ -15,5 +15,5 @@ MonoBehaviour:
   Name: iron sword
   Description: standard sword
   Sprite: {fileID: 21300000, guid: 54e4747d6ac8af645ad190358a13f252, type: 3}
-  Rarity: 1
+  Rarity: 4
   damage: 2

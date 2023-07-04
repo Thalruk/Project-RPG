@@ -15,6 +15,8 @@ public class Player : MonoBehaviour
     [Header("Bonus Stats")]
     [SerializeField] public Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
+    [SerializeField] public Stat gravityMultiplier;
+    [SerializeField] public Stat jumpStrength;
 
     public Inventory inventory;
 

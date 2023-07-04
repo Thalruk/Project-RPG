@@ -21,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     private float pushForce = 0.1f;
 
     private int rotationSpeed = 720;
-    private int jumpHeight = 7;
 
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;
@@ -85,8 +84,11 @@ public class PlayerMovement : MonoBehaviour
 
     public void Jump()
     {
-        gravity.y = jumpHeight;
-        isJumping = true;
+        if (isGrounded)
+        {
+            gravity.y = player.jumpStrength.Value;
+            isJumping = true;
+        }
     }
 
     void HandleGravity()
@@ -98,7 +100,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            gravity.y += Physics.gravity.y * Time.deltaTime;
+            gravity.y += Physics.gravity.y * player.gravityMultiplier.Value * Time.deltaTime;
         }
     }
 

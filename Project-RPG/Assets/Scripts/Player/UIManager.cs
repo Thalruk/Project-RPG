@@ -14,12 +14,15 @@ public class UIManager : MonoBehaviour
     private void Awake()
     {
         healthSlider.maxValue = player.health.maxValue.Value;
+        healthSlider.value = player.health.CurrentValue;
         player.health.OnValueChanged.AddListener(UpdateHealthSlider);
 
         manaSlider.maxValue = player.mana.maxValue.Value;
+        manaSlider.value = player.mana.CurrentValue;
         player.mana.OnValueChanged.AddListener(UpdateManaSlider);
 
         staminaSlider.maxValue = player.stamina.maxValue.Value;
+        staminaSlider.value = player.stamina.CurrentValue;
         player.stamina.OnValueChanged.AddListener(UpdateStaminaSlider);
     }
     private void UpdateHealthSlider(int value)

@@ -5,11 +5,15 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    public GameObject inventoryPanel;
     [SerializeField] Player player;
+
+    public GameObject inventoryPanel;
+
+    public GameObject inventorySlotPanel;
     private InventorySlot[] inventorySlots;
-    public GameObject playerItemDispenser;
-    public GameObject itemContainer;
+    public GameObject inventorySlot;
+
+    public int rowSlotNumber;
 
     private void Awake()
     {
@@ -18,7 +22,7 @@ public class InventoryManager : MonoBehaviour
             Destroy(Instance);
         }
         Instance = this;
-        inventorySlots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
+
     }
     public void ToggleInventory()
     {
@@ -28,6 +32,16 @@ public class InventoryManager : MonoBehaviour
 
     public void RefreshInventory()
     {
+        inventorySlots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
+        Debug.Log((int)((player.inventory.items.Count + 1) % rowSlotNumber));
+        if ((int)((player.inventory.items.Count + 1) % rowSlotNumber) == 0)
+        {
+            Debug.Log("CRERATE SLOTS");
+            for (int i = 0; i < rowSlotNumber; i++)
+            {
+                Instantiate(inventorySlot, inventorySlotPanel.transform);
+            }
+        }
         if (inventoryPanel.activeSelf)
         {
             for (int i = 0; i < player.inventory.items.Count; i++)
@@ -37,5 +51,4 @@ public class InventoryManager : MonoBehaviour
             }
         }
     }
-
 }
