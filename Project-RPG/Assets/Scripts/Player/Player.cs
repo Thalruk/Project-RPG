@@ -16,6 +16,8 @@ public class Player : MonoBehaviour
     [SerializeField] public Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
 
+    [SerializeField] public Inventory inventory;
+
 
     private void Awake()
     {
