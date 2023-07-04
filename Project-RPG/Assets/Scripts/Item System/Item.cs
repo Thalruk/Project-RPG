@@ -8,7 +8,10 @@ public enum Rarity
     Common,
     Uncommon,
     Rare,
-    Legendary
+    Legendary,
+    Magical,
+    Angelic,
+    Demonic
 }
 
 [Serializable]
