@@ -29,7 +29,7 @@ public class InventoryManager : MonoBehaviour
     {
         for (int i = 0; i < player.inventory.items.Count; i++)
         {
-            inventorySlots[i].item = player.inventory.items[i];
+            inventorySlots[i].itemSlot.item = player.inventory.items[i];
             inventorySlots[i].Refresh();
         }
     }
