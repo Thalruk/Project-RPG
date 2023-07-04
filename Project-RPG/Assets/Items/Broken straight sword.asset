@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c362e317515d23c42a82d971c1d7645d, type: 3}
   m_Name: Broken straight sword
   m_EditorClassIdentifier: 
-  Name: aaaaaaa
-  Description: aaaaaaaaaaaaaa
+  Name: broken straight sword
+  Description: standard broken sword
   Sprite: {fileID: 21300000, guid: 8bca21ed94d861e48ba19808249ed102, type: 3}
   Rarity: 0
   damage: 0

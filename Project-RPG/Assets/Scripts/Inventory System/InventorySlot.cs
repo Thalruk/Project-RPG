@@ -5,10 +5,21 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public ItemSlot itemSlot;
+    private ItemSlot itemSlot;
+    public Item Item
+    {
+        get
+        {
+            return itemSlot.item;
+        }
+        set
+        {
+            itemSlot.item = value;
+        }
+    }
     void Awake()
     {
-        Refresh();
+        itemSlot = GetComponentInChildren<ItemSlot>();
     }
 
     public void Refresh()

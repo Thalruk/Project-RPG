@@ -6,12 +6,11 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public Item item;
-    private Image image;
+    public Image image;
 
     private void Awake()
     {
         image = GetComponent<Image>();
-        Refresh();
     }
     public void Refresh()
     {
