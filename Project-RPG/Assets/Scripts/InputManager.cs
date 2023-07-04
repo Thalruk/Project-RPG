@@ -7,7 +7,7 @@ public class InputManager : MonoBehaviour
 {
     PlayerInputActions input;
     [SerializeField] PlayerMovement playerMovement;
-
+    [SerializeField] InventoryManager inventoryManager;
 
     void Awake()
     {
@@ -33,5 +33,9 @@ public class InputManager : MonoBehaviour
 
         playerMovement.Move(input.Player.Movement.ReadValue<Vector2>());
 
+        if(input.Player.Inventory.WasPressedThisFrame())
+        {
+            inventoryManager.ToggleInventory();
+        }
     }
 }

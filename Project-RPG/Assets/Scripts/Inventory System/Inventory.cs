@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Inventory
 {
-    [SerializeField] private List<Item> items;
+    [SerializeField] public List<Item> items;
 
     public void Add(Item item)
     {
