@@ -56,6 +56,9 @@ MonoBehaviour:
     regenValue:
       baseValue: 1
       statModifiers: []
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   mana:
     maxValue:
       baseValue: 100
@@ -64,6 +67,9 @@ MonoBehaviour:
     regenValue:
       baseValue: 1
       statModifiers: []
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   stamina:
     maxValue:
       baseValue: 100
@@ -72,13 +78,17 @@ MonoBehaviour:
     regenValue:
       baseValue: 5
       statModifiers: []
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []
   walkingSpeed:
     baseValue: 5
     statModifiers: []
   runningSpeed:
     baseValue: 10
     statModifiers: []
-  isFighting: 0
+  inventory:
+    items: []
 --- !u!143 &6890390649637282675
 CharacterController:
   m_ObjectHideFlags: 0
@@ -120,7 +130,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   playerBody: {fileID: 1763198286662830656}
   groundCheck: {fileID: 4484170143572062236}
-  groundCheckRadius: -1.01
+  groundCheckDistance: 0.4
+  pushForce: 0.1
   isGrounded: 0
   isRunning: 0
   isJumping: 0
@@ -167,7 +178,7 @@ GameObject:
   - component: {fileID: 3434799344079356488}
   m_Layer: 6
   m_Name: GroundCheck
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

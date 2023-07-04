@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    Player player;
-    PlayerInputActions input;
-    CharacterController controller;
+    public static PlayerMovement Instance;
+    private Player player;
+    private CharacterController controller;
 
 
-    [SerializeField] Camera cam;
+    Camera cam;
     [SerializeField] GameObject playerBody;
     [SerializeField] GameObject groundCheck;
-    [SerializeField] float groundCheckDistance;
 
     private Vector3 finalDirection;
     private Vector3 cameraDirection;
     private Vector3 gravity = Vector3.zero;
 
-    [SerializeField] private float pushForce;
+    private float pushForce = 0.1f;
 
     private int rotationSpeed = 720;
     private int jumpHeight = 7;
@@ -30,26 +29,22 @@ public class PlayerMovement : MonoBehaviour
 
     private void Awake()
     {
-        player = GetComponent<Player>();
-        input = new PlayerInputActions();
-        controller = GetComponent<CharacterController>();
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
+        Instance = this;
 
+        player = GetComponent<Player>();
+        controller = GetComponent<CharacterController>();
+        cam = Camera.main;
     }
-    private void OnEnable()
-    {
-        input.Enable();
-    }
-    private void OnDisable()
-    {
-        input.Disable();
-    }
+
 
     private void Update()
     {
         HandleDataEachFrame();
         HandleGravity();
-        HandleJump();
-        HandleMovement();
         HandleRotation();
     }
 
@@ -57,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
     {
         //better check
         isGrounded = controller.isGrounded;
-        isRunning = input.Player.Sprint.ReadValue<float>() == 1 ? true : false;
+
     }
 
     private void HandleRotation()
@@ -70,9 +65,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    private void HandleMovement()
+    public void Move(Vector2 inputDirection)
     {
-        Vector2 inputDirection = input.Player.Movement.ReadValue<Vector2>();
 
         cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
 
@@ -89,28 +83,23 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void HandleJump()
+    public void Jump()
+    {
+        gravity.y = jumpHeight;
+        isJumping = true;
+    }
+
+    void HandleGravity()
     {
         if (isGrounded)
         {
             isJumping = false;
             gravity.y = -0.5f;
-            if (input.Player.Jump.WasPressedThisFrame())
-            {
-                gravity.y = jumpHeight;
-                isJumping = true;
-            }
         }
-    }
-
-    void HandleGravity()
-    {
-        gravity.y += Physics.gravity.y * Time.deltaTime;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(groundCheck.transform.position, groundCheck.transform.position + Vector3.down * groundCheckDistance);
+        else
+        {
+            gravity.y += Physics.gravity.y * Time.deltaTime;
+        }
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)

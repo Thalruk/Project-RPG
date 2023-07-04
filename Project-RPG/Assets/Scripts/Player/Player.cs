@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     [Header("Stats")]
-    [SerializeField] public ChangeableStat health;
+    public ChangeableStat health;
     [SerializeField] public ChangeableStat mana;
     [SerializeField] public ChangeableStat stamina;
 
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
     [SerializeField] public Stat walkingSpeed;
     [SerializeField] public Stat runningSpeed;
 
-    [SerializeField] public Inventory inventory;
+    public Inventory inventory;
 
 
     private void Awake()

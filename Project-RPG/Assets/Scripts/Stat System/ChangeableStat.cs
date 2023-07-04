@@ -23,7 +23,6 @@ public class ChangeableStat
         {
             currentValue = value;
             OnValueChanged?.Invoke(currentValue);
-            Debug.Log("invoked");
         }
     }
 
