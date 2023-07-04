@@ -18,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 cameraDirection;
     private Vector3 gravity = Vector3.zero;
 
+    [SerializeField] private float pushForce;
+
     private int rotationSpeed = 720;
     private int jumpHeight = 7;
 
@@ -109,5 +111,18 @@ public class PlayerMovement : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawLine(groundCheck.transform.position, groundCheck.transform.position + Vector3.down * groundCheckDistance);
+    }
+
+    private void OnControllerColliderHit(ControllerColliderHit hit)
+    {
+        Rigidbody rigid = hit.collider.attachedRigidbody;
+
+        if (rigid != null)
+        {
+            Vector3 forceDirection = new Vector3(hit.gameObject.transform.position.x - transform.position.x, 0, hit.gameObject.transform.position.z - transform.position.z).normalized;
+            rigid.AddForceAtPosition(forceDirection * pushForce, transform.position, ForceMode.Force);
+
+        }
+
     }
 }

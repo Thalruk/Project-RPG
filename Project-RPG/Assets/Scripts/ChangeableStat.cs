@@ -11,7 +11,7 @@ public class ChangeableStat
     [SerializeField] public Stat maxValue;
     [SerializeField] private int currentValue;
     [SerializeField] public Stat regenValue;
-    public UnityEvent<int> OnValueChanged;
+    [HideInInspector] public UnityEvent<int> OnValueChanged;
 
     public int CurrentValue
     {
