@@ -33,7 +33,7 @@ public class InputManager : MonoBehaviour
 
         playerMovement.Move(input.Player.Movement.ReadValue<Vector2>());
 
-        if(input.Player.Inventory.WasPressedThisFrame())
+        if (input.Player.Inventory.WasPressedThisFrame())
         {
             inventoryManager.ToggleInventory();
         }

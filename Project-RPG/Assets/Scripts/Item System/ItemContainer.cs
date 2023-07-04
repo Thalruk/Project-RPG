@@ -11,6 +11,7 @@ public class ItemContainer : MonoBehaviour
         if (other.tag == "Player")
         {
             other.GetComponent<Player>().inventory.Add(item);
+            InventoryManager.Instance.RefreshInventory();
             Debug.Log("YAHAHA");
             Destroy(gameObject);
         }

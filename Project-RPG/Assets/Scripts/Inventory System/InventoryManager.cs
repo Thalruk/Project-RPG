@@ -5,9 +5,9 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    [SerializeField] GameObject inventory;
+    [SerializeField] GameObject inventoryPanel;
     [SerializeField] Player player;
-    public GameObject inventorySlot;
+    private InventorySlot[] inventorySlots;
 
     private void Awake()
     {
@@ -16,16 +16,21 @@ public class InventoryManager : MonoBehaviour
             Destroy(Instance);
         }
         Instance = this;
+        inventorySlots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
+        ToggleInventory();
+        RefreshInventory();
     }
     public void ToggleInventory()
     {
-        inventory.SetActive(!inventory.activeSelf);
+        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
     }
 
     public void RefreshInventory()
     {
         for (int i = 0; i < player.inventory.items.Count; i++)
         {
+            inventorySlots[i].item = player.inventory.items[i];
+            inventorySlots[i].Refresh();
         }
     }
 }

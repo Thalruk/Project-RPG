@@ -15,8 +15,8 @@ public class ChangeableStat
 
     public int CurrentValue
     {
-        get 
-        { 
+        get
+        {
             return currentValue;
         }
         set

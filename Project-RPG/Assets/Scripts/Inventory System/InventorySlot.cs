@@ -10,7 +10,12 @@ public class InventorySlot : MonoBehaviour
     void Awake()
     {
         itemSpriteSlot = transform.GetChild(0).gameObject;
-        if(item == null)
+        Refresh();
+    }
+
+    public void Refresh()
+    {
+        if (item == null)
         {
             Debug.Log("there is no item");
             itemSpriteSlot.SetActive(false);
@@ -21,11 +26,5 @@ public class InventorySlot : MonoBehaviour
             itemSpriteSlot.SetActive(true);
             itemSpriteSlot.GetComponent<Image>().sprite = item.Sprite;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 }

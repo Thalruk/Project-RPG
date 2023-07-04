@@ -2140,7 +2140,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 250}
+  m_SizeDelta: {x: 0, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &902371225
 MonoBehaviour:
@@ -2196,12 +2196,12 @@ MonoBehaviour:
     m_Left: 10
     m_Right: 10
     m_Top: 10
-    m_Bottom: 10
+    m_Bottom: 20
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 50, y: 50}
-  m_Spacing: {x: 10, y: 10}
+  m_Spacing: {x: 5, y: 5}
   m_Constraint: 0
   m_ConstraintCount: 2
 --- !u!1 &924304842
@@ -3322,6 +3322,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3729763454323291502, guid: ba308a17258ee0840a2784cc0028d666, type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 3549716552292055592, guid: 9f17811941afa4a46939868a8bb864a2, type: 3}
     - target: {fileID: 3811651280164435073, guid: ba308a17258ee0840a2784cc0028d666, type: 3}
       propertyPath: cam
       value: 
@@ -4076,6 +4080,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inventory: {fileID: 1698179943}
+  player: {fileID: 0}
+  inventorySlot: {fileID: 0}
 --- !u!1 &1496087322
 GameObject:
   m_ObjectHideFlags: 3
@@ -4513,7 +4519,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 250, y: 310}
+  m_SizeDelta: {x: 400, y: 360}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1698179945
 MonoBehaviour:
@@ -6032,7 +6038,7 @@ PrefabInstance:
     - target: {fileID: 9058026178440035989, guid: f85e2345ce0ee324ab2bd797e7569995, type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: a7582a4bb6279374b9e42a236b880e0c, type: 2}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -127,11 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 945a751b820dc5341b88a8c967876db2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
   playerBody: {fileID: 1763198286662830656}
   groundCheck: {fileID: 4484170143572062236}
-  groundCheckDistance: 0.4
-  pushForce: 0.1
   isGrounded: 0
   isRunning: 0
   isJumping: 0
@@ -238,7 +235,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7134295391044483493}
-  m_Mesh: {fileID: 3549716552292055592, guid: 9f17811941afa4a46939868a8bb864a2, type: 3}
+  m_Mesh: {fileID: 5060444177187149915, guid: bf6dd1eb2aa578542b531bf70e42ab31, type: 3}
 --- !u!23 &8167214053308833288
 MeshRenderer:
   m_ObjectHideFlags: 0
