@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] GameObject groundCheck;
 
     private Vector3 finalDirection;
-    private Vector3 cameraDirection;
+    [HideInInspector] public Vector3 cameraDirection;
     private Vector3 gravity = Vector3.zero;
 
     private float pushForce = 0.1f;

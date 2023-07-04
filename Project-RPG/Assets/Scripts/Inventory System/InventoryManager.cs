@@ -8,6 +8,8 @@ public class InventoryManager : MonoBehaviour
     public GameObject inventoryPanel;
     [SerializeField] Player player;
     private InventorySlot[] inventorySlots;
+    public GameObject playerItemDispenser;
+    public GameObject itemContainer;
 
     private void Awake()
     {
@@ -26,7 +28,7 @@ public class InventoryManager : MonoBehaviour
 
     public void RefreshInventory()
     {
-        if(inventoryPanel.activeSelf)
+        if (inventoryPanel.activeSelf)
         {
             for (int i = 0; i < player.inventory.items.Count; i++)
             {

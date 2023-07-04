@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     Transform parentAfterDrag;
+    public Transform trans;
     public void OnBeginDrag(PointerEventData eventData)
     {
         parentAfterDrag = transform.parent;
-        transform.SetParent(InventoryManager.Instance.inventoryPanel.transform);
+        transform.SetParent(transform.root);
         transform.SetAsLastSibling();
         eventData.pointerDrag.GetComponent<ItemSlot>().image.raycastTarget = false;
     }
@@ -21,19 +22,17 @@ public class Draggable : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDra
     {
         transform.SetParent(parentAfterDrag);
         transform.localPosition = Vector3.zero;
-        eventData.pointerDrag.GetComponent<ItemSlot>().image.raycastTarget = true;
-    }
 
-    public void OnDrop(PointerEventData eventData)
-    {
         RectTransform rectTransform = InventoryManager.Instance.inventoryPanel.transform as RectTransform;
-        if (!RectTransformUtility.RectangleContainsScreenPoint(rectTransform, eventData.pointerDrag.transform.position))
+        if (!RectTransformUtility.RectangleContainsScreenPoint(rectTransform, eventData.position))
         {
-            Debug.Log("DROPPED ITEM");
-            //if (eventData.pointerDrag.GetComponent<ItemSlot>() != null)
-            //{
-            //    Debug.Log("DROP " + eventData.selectedObject.GetComponent<ItemSlot>().item);
-            //}
+            Debug.Log("DROPPED OUTSIDE");
+            if (eventData.pointerDrag.GetComponent<ItemSlot>() != null)
+            {
+                Debug.Log("there is even an item");
+            }
         }
+
+        eventData.pointerDrag.GetComponent<ItemSlot>().image.raycastTarget = true;
     }
 }

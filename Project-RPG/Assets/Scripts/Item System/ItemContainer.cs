@@ -5,6 +5,12 @@ using UnityEngine;
 public class ItemContainer : MonoBehaviour
 {
     public Item item;
+    private Rigidbody rb;
+
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +18,6 @@ public class ItemContainer : MonoBehaviour
         {
             other.GetComponent<Player>().inventory.Add(item);
             InventoryManager.Instance.RefreshInventory();
-            Debug.Log("YAHAHA");
             Destroy(gameObject);
         }
     }

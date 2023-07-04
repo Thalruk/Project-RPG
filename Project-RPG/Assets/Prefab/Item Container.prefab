@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1761893175229474113}
   - component: {fileID: 4097371482815709512}
   - component: {fileID: 2682841381374743506}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Item Container
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b208c7b18693548841ec566601927c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 61832849106e75342a532c29b7ec2ef4, type: 2}
+  item: {fileID: 0}
 --- !u!65 &2682841381374743506
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77,7 +77,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5395265117096563380}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ GameObject:
   - component: {fileID: 1891266312183734238}
   - component: {fileID: 7445854471473305336}
   - component: {fileID: 1428957437314712124}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
