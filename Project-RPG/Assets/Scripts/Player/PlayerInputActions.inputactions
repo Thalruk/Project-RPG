@@ -40,6 +40,15 @@
                     "processors": "",
                     "interactions": "Press",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Character",
+                    "type": "Button",
+                    "id": "abd23ba8-5527-4925-afff-4fb61e76aca6",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -128,6 +137,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "9a660350-faf1-4e65-afd9-08b4872d798c",
+                    "path": "<Keyboard>/c",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Character",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

@@ -6,10 +6,21 @@ public class ItemContainer : MonoBehaviour
 {
     public Item item;
     private Rigidbody rb;
+    private MeshFilter meshFilter;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        meshFilter = GetComponentInChildren<MeshFilter>();
+        UpdateMesh();
+    }
+
+    public void UpdateMesh()
+    {
+        if (item != null)
+        {
+            meshFilter.mesh = item.Mesh;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
