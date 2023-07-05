@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 [Serializable]
 public class Inventory
 {
-    [SerializeField] public List<Item> items = new List<Item>(35);
+#nullable enable
+    [SerializeField] public List<Item> items = new List<Item>();
 
     public void Add(Item item)
     {

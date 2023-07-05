@@ -58,4 +58,10 @@ public class ItemSlot : MonoBehaviour
             image.sprite = item.Sprite;
         }
     }
+
+    public void ResetState()
+    {
+        item = null;
+        Refresh();
+    }
 }

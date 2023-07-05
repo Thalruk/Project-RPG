@@ -23,6 +23,8 @@ public class InventoryManager : MonoBehaviour
         }
         Instance = this;
 
+
+        RefreshInventory();
     }
     public void ToggleInventory()
     {
@@ -33,22 +35,41 @@ public class InventoryManager : MonoBehaviour
     public void RefreshInventory()
     {
         inventorySlots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
-        Debug.Log((int)((player.inventory.items.Count + 1) % rowSlotNumber));
+
+
         if ((int)((player.inventory.items.Count + 1) % rowSlotNumber) == 0)
         {
             Debug.Log("CRERATE SLOTS");
             for (int i = 0; i < rowSlotNumber; i++)
             {
-                Instantiate(inventorySlot, inventorySlotPanel.transform);
+                ItemSlot itemSlot = Instantiate(inventorySlot, inventorySlotPanel.transform).GetComponent<ItemSlot>();
             }
         }
         if (inventoryPanel.activeSelf)
         {
-            for (int i = 0; i < player.inventory.items.Count; i++)
+            for (int i = 0; i < inventorySlots.Length; i++)
             {
-                inventorySlots[i].Item = player.inventory.items[i];
+                if (i < player.inventory.items.Count)
+                {
+                    inventorySlots[i].Item = player.inventory.items[i];
+                }
+                else
+                {
+                    inventorySlots[i].ResetState();
+                }
+                
                 inventorySlots[i].Refresh();
             }
         }
+    }
+
+    public void AddItem(Item item)
+    {
+        player.inventory.Add(item);
+    }
+
+    public bool RemoveItem(Item item)
+    {
+        return player.inventory.Remove(item);
     }
 }
