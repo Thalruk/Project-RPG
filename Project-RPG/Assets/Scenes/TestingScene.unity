@@ -6193,10 +6193,6 @@ PrefabInstance:
       propertyPath: statModifier.value
       value: 20
       objectReference: {fileID: 0}
-    - target: {fileID: 3558846121440668196, guid: ee598c286183a0c4485ff556de8f7956, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2ebf5b14278e8db41a6be6d4244719d6, type: 2}
     - target: {fileID: 4650276530922855974, guid: ee598c286183a0c4485ff556de8f7956, type: 3}
       propertyPath: m_RootOrder
       value: 18
