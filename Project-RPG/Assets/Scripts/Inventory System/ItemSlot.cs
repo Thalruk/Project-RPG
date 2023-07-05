@@ -8,6 +8,7 @@ public class ItemSlot : MonoBehaviour
     public Item item;
     public Image image;
     public Image Background;
+
     [SerializeField] private Sprite commonBackground;
     [SerializeField] private Sprite uncommonBackground;
     [SerializeField] private Sprite rareBackground;
@@ -25,6 +26,7 @@ public class ItemSlot : MonoBehaviour
         if (item == null)
         {
             image.enabled = false;
+            Background.sprite = null;
         }
         else
         {
@@ -57,5 +59,10 @@ public class ItemSlot : MonoBehaviour
             image.enabled = true;
             image.sprite = item.Sprite;
         }
+    }
+    public void ResetState()
+    {
+        item = null;
+        Refresh();
     }
 }
