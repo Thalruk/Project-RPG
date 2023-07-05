@@ -46,7 +46,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
                 if (eventData.pointerDrag.TryGetComponent(out ItemSlot slot))
                 {
                     Debug.Log("there is even an item");
-                    ItemContainer container = Instantiate(itemContainer, Player.Instance.transform.position + new Vector3(0, 1, 2), Quaternion.identity).GetComponent<ItemContainer>();
+                    ItemContainer container = Instantiate(itemContainer, Player.Instance.transform.position + PlayerMovement.Instance.cameraDirection.normalized * 2, Quaternion.identity).GetComponent<ItemContainer>();
                     container.item = slot.item;
                     container.UpdateMesh();
                     InventoryManager.Instance.RemoveItem(slot.item);
