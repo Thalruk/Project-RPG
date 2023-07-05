@@ -22,5 +22,6 @@ public class Item : ScriptableObject
     [TextArea()]
     public string Description;
     public Sprite Sprite;
+    public Mesh Mesh;
     public Rarity Rarity;
 }
