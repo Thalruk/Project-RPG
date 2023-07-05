@@ -7,6 +7,7 @@ public class ItemContainer : MonoBehaviour
     public Item item;
     private Rigidbody rb;
     private MeshFilter meshFilter;
+    [SerializeField] private AnimationClip clip;
 
     private void Awake()
     {
