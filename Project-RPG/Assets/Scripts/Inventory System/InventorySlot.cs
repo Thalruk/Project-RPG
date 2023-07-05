@@ -26,9 +26,4 @@ public class InventorySlot : MonoBehaviour
     {
         itemSlot.Refresh();
     }
-
-    public void ResetState()
-    {
-        itemSlot.ResetState();
-    }
 }
