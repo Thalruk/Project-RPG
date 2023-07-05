@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName ="new sword", menuName = "Items/Weapons/new sword")]
-public class Sword : Weapon
+public sealed class Sword : Weapon
 {
   
 }
