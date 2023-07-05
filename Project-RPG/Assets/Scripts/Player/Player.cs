@@ -18,6 +18,8 @@ public class Player : MonoBehaviour
     [SerializeField] public Stat gravityMultiplier;
     [SerializeField] public Stat jumpStrength;
 
+    [Space(10)]
+    [Header("Inventory")]
     public Inventory inventory;
 
 
