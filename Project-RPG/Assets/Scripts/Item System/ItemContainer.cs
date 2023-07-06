@@ -2,15 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Interactable))]
 public class ItemContainer : MonoBehaviour
 {
     public Item item;
-    private Rigidbody rb;
     private MeshFilter meshFilter;
 
     private void Awake()
     {
-        rb = GetComponent<Rigidbody>();
         meshFilter = GetComponentInChildren<MeshFilter>();
         UpdateMesh();
     }
@@ -22,7 +21,6 @@ public class ItemContainer : MonoBehaviour
             meshFilter.mesh = item.Mesh;
         }
     }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
