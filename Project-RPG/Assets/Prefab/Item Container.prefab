@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4097371482815709512}
   - component: {fileID: 2682841381374743506}
   - component: {fileID: 3919310778802683434}
-  - component: {fileID: 797807800013576462}
+  - component: {fileID: 6932710480854498002}
   m_Layer: 8
   m_Name: Item Container
   m_TagString: Untagged
@@ -86,7 +86,7 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!114 &797807800013576462
+--- !u!114 &6932710480854498002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,24 +95,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 780243143657130672}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00ab4d9c2036da445b7ca910a95d192c, type: 3}
+  m_Script: {fileID: 11500000, guid: 4f1cdc7160dd31e4fa50fdffe26ff1b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interaction:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+  message: 
 --- !u!1 &2266452314478720867
 GameObject:
   m_ObjectHideFlags: 0

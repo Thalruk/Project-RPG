@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Interactable))]
+[RequireComponent(typeof(Pickable))]
 public class ItemContainer : MonoBehaviour
 {
     public Item item;
@@ -19,15 +19,6 @@ public class ItemContainer : MonoBehaviour
         if (item != null)
         {
             meshFilter.mesh = item.Mesh;
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            other.GetComponent<Player>().inventory.Add(item);
-            InventoryManager.Instance.RefreshInventory();
-            Destroy(gameObject);
         }
     }
 }

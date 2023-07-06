@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Progress;
 
-public class Pickable : MonoBehaviour
+public class Pickable : Interactable
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Interact()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        InventoryManager.Instance.AddItem(GetComponent<ItemContainer>().item);
+        InventoryManager.Instance.RefreshInventory();
+        Destroy(gameObject);
     }
 }
