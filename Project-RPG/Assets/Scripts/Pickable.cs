@@ -9,6 +9,8 @@ public class Pickable : Interactable
     {
         InventoryManager.Instance.AddItem(GetComponent<ItemContainer>().item);
         InventoryManager.Instance.RefreshInventory();
-        Destroy(gameObject);
+        InteractionManager.Instance.RemoveInteractable(this);
+
+        Destroy(gameObject,0.1f);
     }
 }

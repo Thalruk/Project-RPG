@@ -8,10 +8,9 @@ using static UnityEditor.Progress;
 public class Interactable : MonoBehaviour
 {
 
-    public string message;
     public virtual void Interact()
     {
-        Debug.Log($"[{gameObject.name}]->{message}");
+        Debug.Log($"[{gameObject.name}]->This should not show!");
     }
 
     private void OnTriggerEnter(Collider other)

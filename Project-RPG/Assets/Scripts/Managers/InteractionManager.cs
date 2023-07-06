@@ -7,7 +7,7 @@ public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance;
 
-    public List<Interactable> interactables;
+    [SerializeField] private List<Interactable> interactables;
     // Start is called before the first frame update
     void Awake()
     {
@@ -30,7 +30,7 @@ public class InteractionManager : MonoBehaviour
 
     public void Interact()
     {
-        if(interactables.Count > 0)
+        if (interactables.Count > 0)
         {
             interactables.First().Interact();
         }
