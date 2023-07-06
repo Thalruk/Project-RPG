@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance;
+    [SerializeField] private GameObject interactionText;
 
     [SerializeField] private List<Interactable> interactables;
     // Start is called before the first frame update
@@ -21,11 +24,14 @@ public class InteractionManager : MonoBehaviour
     public void AddInteractable(Interactable interactable)
     {
         interactables.Add(interactable);
+        RefreshInteractionUI();
     }
 
     public bool RemoveInteractable(Interactable interactable)
     {
-        return interactables.Remove(interactable);
+        bool result = interactables.Remove(interactable);
+        RefreshInteractionUI();
+        return result;
     }
 
     public void Interact()
@@ -37,6 +43,18 @@ public class InteractionManager : MonoBehaviour
         else
         {
             Debug.Log("There are no things to interact with");
+        }
+    }
+
+    public void RefreshInteractionUI()
+    {
+        if (interactables.Count > 0)
+        {
+            interactionText.SetActive(true);
+        }
+        else
+        {
+            interactionText.SetActive(false);
         }
     }
 }
