@@ -19,6 +19,9 @@ public class Collectible : MonoBehaviour
         if (other.tag == "Player")
         {
             collectSound.Play();
+
+            GetComponentInParent<Spawner>().SpawnAfterTime();
+
             Player.Instance.runningSpeed.AddModifier(statModifier);
             Player.Instance.walkingSpeed.AddModifier(statModifier);
 
@@ -34,5 +37,4 @@ public class Collectible : MonoBehaviour
         Player.Instance.runningSpeed.RemoveModifier(statModifier);
         Player.Instance.walkingSpeed.RemoveModifier(statModifier);
     }
-
 }

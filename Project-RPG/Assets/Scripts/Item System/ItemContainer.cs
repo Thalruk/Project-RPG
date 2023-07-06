@@ -6,12 +6,19 @@ using UnityEngine;
 public class ItemContainer : MonoBehaviour
 {
     public Item item;
-    private MeshFilter meshFilter;
+    [SerializeField] private MeshFilter meshFilter;
 
     private void Awake()
     {
-        meshFilter = GetComponentInChildren<MeshFilter>();
         UpdateMesh();
+    }
+
+    private void OnValidate()
+    {
+        if(item!= null)
+        {
+            meshFilter.mesh = item.Mesh;
+        }
     }
 
     public void UpdateMesh()
