@@ -14,8 +14,8 @@ TagManager:
   - Player
   - Ground
   - Container
-  - 
-  - 
+  - Ignore light
+  - light test
   - 
   - 
   - 
