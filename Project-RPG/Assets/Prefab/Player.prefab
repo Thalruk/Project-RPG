@@ -133,11 +133,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1763198286662830656}
-  groundCheck: {fileID: 0}
+  anim: {fileID: 0}
   cameraDirection: {x: 0, y: 0, z: 0}
   isGrounded: 0
   isRunning: 0
   isJumping: 0
+  isFalling: 0
 --- !u!1 &1763198286662830656
 GameObject:
   m_ObjectHideFlags: 0
@@ -184,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223947089, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 185160433139728343, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_IsActive
