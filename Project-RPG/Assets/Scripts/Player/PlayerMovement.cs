@@ -12,7 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     Camera cam;
     [SerializeField] GameObject playerBody;
-    [SerializeField] GameObject groundCheck;
+    [SerializeField] Animator anim;
 
     private Vector3 finalDirection;
     [HideInInspector] public Vector3 cameraDirection;
@@ -25,6 +25,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;
     [SerializeField] public bool isJumping;
+    [SerializeField] public bool isFalling;
 
 
     private void Awake()
@@ -66,7 +67,6 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector2 inputDirection)
     {
-
         cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
 
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
@@ -80,6 +80,10 @@ public class PlayerMovement : MonoBehaviour
         {
             controller.Move((finalDirection * player.walkingSpeed.Value + gravity) * Time.deltaTime);
         }
+
+
+        Debug.Log(isRunning ? inputDirection.normalized.magnitude * 1.5f : inputDirection.normalized.magnitude);
+        anim.SetFloat("Speed", isRunning ? inputDirection.normalized.magnitude * 1.5f : inputDirection.normalized.magnitude);
     }
 
     public void Jump()
@@ -88,6 +92,8 @@ public class PlayerMovement : MonoBehaviour
         {
             gravity.y = player.jumpStrength.Value;
             isJumping = true;
+            isFalling = false;
+            anim.SetTrigger("Jump");
         }
     }
 
@@ -97,11 +103,24 @@ public class PlayerMovement : MonoBehaviour
         {
             isJumping = false;
             gravity.y = -0.5f;
+            isFalling = false;
         }
         else
         {
+            if (gravity.y > 0)
+            {
+                isJumping = true;
+            }
+            else
+            {
+                isFalling = true;
+                isJumping = false;
+            }
             gravity.y += Physics.gravity.y * player.gravityMultiplier.Value * Time.deltaTime;
         }
+        anim.SetBool("isGrounded", isGrounded);
+        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isFalling", isFalling);
     }
 
     private void OnControllerColliderHit(ControllerColliderHit hit)
@@ -112,8 +131,6 @@ public class PlayerMovement : MonoBehaviour
         {
             Vector3 forceDirection = new Vector3(hit.gameObject.transform.position.x - transform.position.x, 0, hit.gameObject.transform.position.z - transform.position.z).normalized;
             rigid.AddForceAtPosition(forceDirection * pushForce, transform.position, ForceMode.Force);
-
         }
-
     }
 }
