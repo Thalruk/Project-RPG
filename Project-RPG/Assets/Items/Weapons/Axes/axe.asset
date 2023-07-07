@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: axe
   Description: standard axe
-  Sprite: {fileID: 21300000, guid: b76b31380c11c2d47bf32c8bac39e7bd, type: 3}
+  Sprite: {fileID: 21300000, guid: bc2a42b5750cea3418f36b65112e199c, type: 3}
   Mesh: {fileID: -9035476687761559398, guid: a1f67aa07796fb24d9b3adf4cc449805, type: 3}
   Rarity: 0
   damage: 5

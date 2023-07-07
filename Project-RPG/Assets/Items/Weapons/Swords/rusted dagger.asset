@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Rusted Dagger
   Description: unga bunga
-  Sprite: {fileID: 21300000, guid: b76b31380c11c2d47bf32c8bac39e7bd, type: 3}
+  Sprite: {fileID: 21300000, guid: 18b855f1fa5a6d446a73b14755059232, type: 3}
   Mesh: {fileID: -1440419022873279924, guid: 79f4cdb09da63b74081e5ed761e963ee, type: 3}
   Rarity: 1
   damage: 2
