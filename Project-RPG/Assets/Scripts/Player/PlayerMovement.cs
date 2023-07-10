@@ -1,23 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
     private Player player;
-    private CharacterController controller;
-
+    private Rigidbody rb;
 
     Camera cam;
+
     [SerializeField] GameObject playerBody;
     [SerializeField] Animator anim;
 
     private Vector3 finalDirection;
     [HideInInspector] public Vector3 cameraDirection;
     private Vector3 gravity = Vector3.zero;
-
-    private float pushForce = 0.1f;
 
     private int rotationSpeed = 720;
 
@@ -36,25 +35,25 @@ public class PlayerMovement : MonoBehaviour
         Instance = this;
 
         player = GetComponent<Player>();
-        controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
         cam = Camera.main;
     }
 
 
     private void Update()
     {
-        HandleDataEachFrame();
-        HandleGravity();
-        HandleRotation();
+        //HandleGravity();
+        //HandleRotation();
     }
-
-    void HandleDataEachFrame()
+    public void Move(Vector2 inputDirection)
     {
-        //better check
-        isGrounded = controller.isGrounded;
+        cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
+
+        finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
+
+        rb.velocity = finalDirection * player.walkingSpeed.Value * Time.fixedDeltaTime;
 
     }
-
     private void HandleRotation()
     {
         if (finalDirection != Vector3.zero)
@@ -64,26 +63,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public void Move(Vector2 inputDirection)
-    {
-        cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
 
-        finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
-
-
-        if (isRunning && !isJumping)
-        {
-            controller.Move((finalDirection * player.runningSpeed.Value + gravity) * Time.deltaTime);
-        }
-        else
-        {
-            controller.Move((finalDirection * player.walkingSpeed.Value + gravity) * Time.deltaTime);
-        }
-
-
-        Debug.Log(isRunning ? inputDirection.normalized.magnitude * 1.5f : inputDirection.normalized.magnitude);
-        anim.SetFloat("Speed", isRunning ? inputDirection.normalized.magnitude * 1.5f : inputDirection.normalized.magnitude);
-    }
 
     public void Jump()
     {
@@ -116,20 +96,6 @@ public class PlayerMovement : MonoBehaviour
                 isJumping = false;
             }
             gravity.y += Physics.gravity.y * player.gravityMultiplier.Value * Time.deltaTime;
-        }
-        anim.SetBool("isGrounded", isGrounded);
-        anim.SetBool("isJumping", isJumping);
-        anim.SetBool("isFalling", isFalling);
-    }
-
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
-        Rigidbody rigid = hit.collider.attachedRigidbody;
-
-        if (rigid != null)
-        {
-            Vector3 forceDirection = new Vector3(hit.gameObject.transform.position.x - transform.position.x, 0, hit.gameObject.transform.position.z - transform.position.z).normalized;
-            rigid.AddForceAtPosition(forceDirection * pushForce, transform.position, ForceMode.Force);
         }
     }
 }

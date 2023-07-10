@@ -5,9 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    public string sceneName;
     void Awake()
     {
-        SceneManager.LoadScene("dungeon1", LoadSceneMode.Additive);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
     }
 
     // Update is called once per frame

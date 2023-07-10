@@ -51,10 +51,12 @@ MonoBehaviour:
     maxValue:
       baseValue: 100
       statModifiers: []
-    currentValue: 100
+    currentValue: 0
     regenValue:
       baseValue: 1
-      statModifiers: []
+      statModifiers:
+      - value: 0
+        type: 0
     OnValueChanged:
       m_PersistentCalls:
         m_Calls: []
@@ -87,13 +89,14 @@ MonoBehaviour:
     baseValue: 10
     statModifiers: []
   gravityMultiplier:
-    baseValue: 0
+    baseValue: 3
     statModifiers: []
   jumpStrength:
-    baseValue: 0
+    baseValue: 10
     statModifiers: []
   inventory:
-    items: []
+    items:
+    - {fileID: 11400000, guid: f381d55e1e19eb64e889d5286e4393f6, type: 2}
 --- !u!143 &6890390649637282675
 CharacterController:
   m_ObjectHideFlags: 0
