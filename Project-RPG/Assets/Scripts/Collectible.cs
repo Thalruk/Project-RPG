@@ -22,8 +22,7 @@ public class Collectible : MonoBehaviour
 
             GetComponentInParent<Spawner>().SpawnAfterTime();
 
-            Player.Instance.runningSpeed.AddModifier(statModifier);
-            Player.Instance.walkingSpeed.AddModifier(statModifier);
+            Player.Instance.Speed.AddModifier(statModifier);
 
             GetComponent<Collider>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
@@ -34,7 +33,6 @@ public class Collectible : MonoBehaviour
 
     private void OnDestroy()
     {
-        Player.Instance.runningSpeed.RemoveModifier(statModifier);
-        Player.Instance.walkingSpeed.RemoveModifier(statModifier);
+        Player.Instance.Speed.RemoveModifier(statModifier);
     }
 }

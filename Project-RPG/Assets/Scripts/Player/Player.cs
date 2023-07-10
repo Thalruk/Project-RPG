@@ -7,16 +7,15 @@ public class Player : MonoBehaviour
     public static Player Instance;
 
     [Header("Stats")]
-    public ChangeableStat health;
-    [SerializeField] public ChangeableStat mana;
-    [SerializeField] public ChangeableStat stamina;
+    [SerializeField] public ChangeableStat Health;
+    [SerializeField] public ChangeableStat Mana;
+    [SerializeField] public ChangeableStat Stamina;
 
     [Space(10)]
     [Header("Bonus Stats")]
-    [SerializeField] public Stat walkingSpeed;
-    [SerializeField] public Stat runningSpeed;
-    [SerializeField] public Stat gravityMultiplier;
-    [SerializeField] public Stat jumpStrength;
+    [SerializeField] public Stat Speed;
+    [SerializeField] public Stat JumpStrength;
+    [SerializeField] public Stat GravityMultiplier;
 
     [Space(10)]
     [Header("Inventory")]
@@ -31,8 +30,8 @@ public class Player : MonoBehaviour
         }
         Instance = this;
 
-        StartCoroutine(health.Regenerate());
-        StartCoroutine(mana.Regenerate());
-        StartCoroutine(stamina.Regenerate());
+        StartCoroutine(Health.Regenerate());
+        StartCoroutine(Mana.Regenerate());
+        StartCoroutine(Stamina.Regenerate());
     }
 }

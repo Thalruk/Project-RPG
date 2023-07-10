@@ -33,7 +33,7 @@ Transform:
   m_Children:
   - {fileID: 6438530467506730145}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8841747252877961528
 Rigidbody:
@@ -59,9 +59,9 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!64 &1670291995114266903
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -96,6 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00ab4d9c2036da445b7ca910a95d192c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  message: 
 --- !u!1 &6015191968447626162
 GameObject:
   m_ObjectHideFlags: 0

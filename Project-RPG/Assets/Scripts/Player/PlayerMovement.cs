@@ -6,20 +6,25 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public static PlayerMovement Instance;
+
     private Player player;
     private Rigidbody rb;
-
-    Camera cam;
+    private Camera cam;
 
     [SerializeField] GameObject playerBody;
-    [SerializeField] Animator anim;
 
     private Vector3 finalDirection;
     [HideInInspector] public Vector3 cameraDirection;
-    private Vector3 gravity = Vector3.zero;
 
+
+    [Header("Movement Settings")]
+    [SerializeField] private float groundCheckHeight = 0.2f;
+    [SerializeField] private LayerMask ground;
+    [SerializeField] private float groundDrag;
+    [SerializeField] private float airMultiplier;
     private int rotationSpeed = 720;
 
+    [Header("State")]
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;
     [SerializeField] public bool isJumping;
@@ -39,11 +44,20 @@ public class PlayerMovement : MonoBehaviour
         cam = Camera.main;
     }
 
-
     private void Update()
     {
-        //HandleGravity();
-        //HandleRotation();
+        isGrounded = Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
+
+        SpeedControl();
+
+        if (isGrounded)
+        {
+            rb.drag = groundDrag;
+        }
+        else
+        {
+            rb.drag = 0;
+        }
     }
     public void Move(Vector2 inputDirection)
     {
@@ -51,8 +65,14 @@ public class PlayerMovement : MonoBehaviour
 
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
-        rb.velocity = finalDirection * player.walkingSpeed.Value * Time.fixedDeltaTime;
-
+        if (isGrounded)
+        {
+            rb.AddForce(finalDirection * player.Speed.Value * 10f, ForceMode.Force);
+        }
+        else
+        {
+            rb.AddForce(finalDirection * player.Speed.Value * 10f * airMultiplier, ForceMode.Force);
+        }
     }
     private void HandleRotation()
     {
@@ -63,39 +83,29 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckHeight);
+    }
 
+    void SpeedControl()
+    {
+        Vector3 flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+
+        if (flatVelocity.magnitude > player.Speed.Value)
+        {
+            Vector3 limitedVelocity = flatVelocity.normalized * player.Speed.Value;
+            rb.velocity = new Vector3(limitedVelocity.x, rb.velocity.y, limitedVelocity.z);
+        }
+    }
 
     public void Jump()
     {
         if (isGrounded)
         {
-            gravity.y = player.jumpStrength.Value;
-            isJumping = true;
-            isFalling = false;
-            anim.SetTrigger("Jump");
-        }
-    }
-
-    void HandleGravity()
-    {
-        if (isGrounded)
-        {
-            isJumping = false;
-            gravity.y = -0.5f;
-            isFalling = false;
-        }
-        else
-        {
-            if (gravity.y > 0)
-            {
-                isJumping = true;
-            }
-            else
-            {
-                isFalling = true;
-                isJumping = false;
-            }
-            gravity.y += Physics.gravity.y * player.gravityMultiplier.Value * Time.deltaTime;
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            rb.AddForce(transform.up * player.JumpStrength.Value, ForceMode.Impulse);
         }
     }
 }
