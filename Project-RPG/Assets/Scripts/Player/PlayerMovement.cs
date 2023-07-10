@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-        if (isGrounded ||IsOnSlope())
+        if (isGrounded)
         {
             rb.drag = groundDrag;
         }
@@ -102,11 +102,11 @@ public class PlayerMovement : MonoBehaviour
         {
             isOnSlope = true;
 
-            rb.AddForce(GetSlopeMoveDirection() * speed * 10f, ForceMode.Force);
+            rb.AddForce(GetSlopeMoveDirection() * speed * 20f, ForceMode.Force);
 
             if (rb.velocity.y > 0)
             {
-                rb.AddForce(Vector3.down * 40f, ForceMode.Force);
+                rb.AddForce(Vector3.down * 80f, ForceMode.Force);
             }
         }
         else if (isGrounded)
