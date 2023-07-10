@@ -24,6 +24,7 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         playerMovement.isRunning = input.Player.Sprint.ReadValue<float>() == 1 ? true : false;
+
         if (input.Player.Jump.WasPressedThisFrame())
         {
             playerMovement.Jump();

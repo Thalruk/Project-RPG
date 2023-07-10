@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2638822410369652074}
   - component: {fileID: 183024345454762522}
   - component: {fileID: 8736560594013653408}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5027072545354412325}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +126,7 @@ GameObject:
   - component: {fileID: 5095508247533876460}
   - component: {fileID: 8664549578210274343}
   - component: {fileID: 1353379344065916876}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -147,7 +147,7 @@ Transform:
   m_Children:
   - {fileID: 5027072545354412325}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &8664549578210274343
 BoxCollider:

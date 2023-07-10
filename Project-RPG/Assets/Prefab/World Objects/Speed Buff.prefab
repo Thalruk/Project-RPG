@@ -5014,7 +5014,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifier:
-    value: 20
+    value: 7
     type: 0
   buffTime: 5
 --- !u!135 &4657271885714076900
