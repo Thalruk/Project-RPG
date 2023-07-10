@@ -8,10 +8,12 @@ using UnityEngine.UI;
 public class InteractionManager : MonoBehaviour
 {
     public static InteractionManager Instance;
-    [SerializeField] private GameObject interactionText;
 
     [SerializeField] private List<Interactable> interactables;
-    // Start is called before the first frame update
+
+    [SerializeField] private GameObject interactablePanel;
+    [SerializeField] private TMP_Text interactableText;
+
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -50,11 +52,19 @@ public class InteractionManager : MonoBehaviour
     {
         if (interactables.Count > 0)
         {
-            interactionText.SetActive(true);
+            interactablePanel.SetActive(true);
+            if (interactables[0].GetType() == typeof(Interactable))
+            {
+                interactableText.text = "Press E to interact";
+            }
+            else if (interactables[0].GetType() == typeof(Pickable))
+            {
+                interactableText.text = "Press E to pick up Item";
+            }
         }
         else
         {
-            interactionText.SetActive(false);
+            interactablePanel.SetActive(false);
         }
     }
 }
