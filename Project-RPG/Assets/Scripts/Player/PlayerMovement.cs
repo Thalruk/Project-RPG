@@ -20,7 +20,8 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement Settings")]
 
     private int rotationSpeed = 720;
-    [SerializeField] private float speed;
+    [SerializeField] private float actualSpeed;
+    [SerializeField] private float gravity;
 
     [Header("Ground Check")]
     [SerializeField] private float groundCheckHeight = 0.2f;
@@ -51,29 +52,40 @@ public class PlayerMovement : MonoBehaviour
         //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
     }
 
-    void StateHandler()
+    private void LateUpdate()
     {
-        if (isGrounded && isRunning)
-        {
-            speed = player.runnigSpeed.Value;
-        }
-        else if (isGrounded)
-        {
-            speed = player.walkingSpeed.Value;
-        }
+        HandleRotation();
     }
+
     public void Move(Vector2 inputDirection)
     {
         cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
 
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
+
+
         Debug.Log(finalDirection);
 
         if (isGrounded)
         {
-            characterController.Move((finalDirection + Physics.gravity) * player.walkingSpeed.Value * Time.fixedDeltaTime);
+            gravity = -1;
+
+            if (isRunning)
+            {
+                actualSpeed = player.runnigSpeed.Value;
+            }
+            else
+            {
+                actualSpeed = player.walkingSpeed.Value;
+            }
         }
+        else
+        {
+            gravity += Physics.gravity.y;
+        }
+
+        characterController.Move((finalDirection * actualSpeed + Vector3.up * gravity * Time.fixedDeltaTime) * Time.fixedDeltaTime);
     }
 
     public void Jump()
@@ -90,15 +102,18 @@ public class PlayerMovement : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckHeight);
     }
 
+    private void HandleRotation()
+    {
+        if (finalDirection != Vector3.zero)
+        {
+            Quaternion desiredRotation = Quaternion.LookRotation(finalDirection, Vector3.up);
+            playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
 
-    //character comntroller version
-    //private void HandleRotation()
-    //{
-    //    if (finalDirection != Vector3.zero)
-    //    {
-    //        Quaternion desiredRotation = Quaternion.LookRotation(finalDirection, Vector3.up);
-    //        playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
-    //    }
-    //}
+    void HandleGravity()
+    {
+
+    }
 
 }

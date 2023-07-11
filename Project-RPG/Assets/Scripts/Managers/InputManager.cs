@@ -29,6 +29,16 @@ public class InputManager : MonoBehaviour
         {
             playerMovement.Jump();
         }
+
+        if (input.UI.Inventory.WasPressedThisFrame())
+        {
+            InventoryManager.Instance.ToggleInventory();
+        }
+
+        if (input.Player.Interact.WasPressedThisFrame())
+        {
+            InteractionManager.Instance.Interact();
+        }
     }
 
     private void FixedUpdate()

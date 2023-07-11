@@ -33,24 +33,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Inventory",
-                    "type": "Button",
-                    "id": "93e71a51-c77a-47e1-abc5-1cd35b37dde0",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "Press",
-                    "initialStateCheck": false
-                },
-                {
-                    "name": "Character",
-                    "type": "Button",
-                    "id": "abd23ba8-5527-4925-afff-4fb61e76aca6",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                },
-                {
                     "name": "Interact",
                     "type": "Button",
                     "id": "8bac3d7c-99ef-45cd-8542-82ffd95526b1",
@@ -140,9 +122,46 @@
                 },
                 {
                     "name": "",
-                    "id": "923f2f0e-aa1f-4c2e-b87c-b1bab2e6e3d1",
-                    "path": "<Keyboard>/i",
+                    "id": "b1b080a3-1220-4ff1-86f5-ccdcb4cba979",
+                    "path": "<Keyboard>/e",
+                    "interactions": "Press",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
+            "name": "UI",
+            "id": "dc581cb1-45be-4264-8b84-eb7c59af581d",
+            "actions": [
+                {
+                    "name": "Inventory",
+                    "type": "Button",
+                    "id": "f749a8dc-8507-426b-94c5-854d7e2ecb16",
+                    "expectedControlType": "Button",
+                    "processors": "",
                     "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Character",
+                    "type": "Button",
+                    "id": "1d377482-63e2-43d5-b787-3b3bf3f5f5a2",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7bc0119c-5408-4493-9832-167439d884a6",
+                    "path": "<Keyboard>/i",
+                    "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Inventory",
@@ -151,23 +170,12 @@
                 },
                 {
                     "name": "",
-                    "id": "9a660350-faf1-4e65-afd9-08b4872d798c",
+                    "id": "9825275e-3b2e-4c99-83ec-69f919aa98db",
                     "path": "<Keyboard>/c",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",
                     "action": "Character",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b1b080a3-1220-4ff1-86f5-ccdcb4cba979",
-                    "path": "<Keyboard>/e",
-                    "interactions": "Press",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
