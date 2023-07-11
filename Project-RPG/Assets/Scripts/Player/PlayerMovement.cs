@@ -59,16 +59,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(Vector2 inputDirection)
     {
-        cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
-
-        finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
-
-
-
-        Debug.Log(finalDirection);
-
         if (isGrounded)
         {
+            cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
+
+            finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
+
             gravity = -1;
 
             if (isRunning)
@@ -85,6 +81,7 @@ public class PlayerMovement : MonoBehaviour
             gravity += Physics.gravity.y;
         }
 
+
         characterController.Move((finalDirection * actualSpeed + Vector3.up * gravity * Time.fixedDeltaTime) * Time.fixedDeltaTime);
     }
 
@@ -92,7 +89,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (isGrounded)
         {
-
+            gravity = player.JumpStrength.Value;
         }
     }
 

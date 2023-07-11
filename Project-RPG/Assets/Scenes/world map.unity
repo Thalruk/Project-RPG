@@ -7898,6 +7898,27 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7367973044878609258, guid: f2db1d06f79fef94592fee4b86c679d8, type: 3}
   m_PrefabInstance: {fileID: 245840285}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &256862750 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6322556187633357650, guid: f5e4cf5af47ee60418f92554c028a4ce, type: 3}
+  m_PrefabInstance: {fileID: 971025533}
+  m_PrefabAsset: {fileID: 0}
+--- !u!111 &256862751
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 256862750}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 051d1228554514344a0dc00ffc1d6b94, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 051d1228554514344a0dc00ffc1d6b94, type: 2}
+  m_WrapMode: 4
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0
 --- !u!1 &269403656
 GameObject:
   m_ObjectHideFlags: 0
@@ -17396,10 +17417,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: DoorGate_Wooden_Left
       objectReference: {fileID: 0}
+    - target: {fileID: 6322556187635551634, guid: f5e4cf5af47ee60418f92554c028a4ce, type: 3}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6322556187635551634, guid: f5e4cf5af47ee60418f92554c028a4ce, type: 3}
+      propertyPath: m_DynamicOccludee
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6322556187633357650, guid: f5e4cf5af47ee60418f92554c028a4ce, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 256862751}
   m_SourcePrefab: {fileID: 100100000, guid: f5e4cf5af47ee60418f92554c028a4ce, type: 3}
 --- !u!1 &971262522
 GameObject:
