@@ -6,10 +6,14 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
     public bool toggled = false;
-    public void ToggleMenu()
+    public void PauseGame()
     {
         toggled = !menuPanel.activeSelf;
         menuPanel.SetActive(toggled);
-        Time.timeScale = toggled ? 0 : 1;
+    }
+    public void ExitGame()
+    {
+        Debug.Log("Exit application");
+        Application.Quit();
     }
 }

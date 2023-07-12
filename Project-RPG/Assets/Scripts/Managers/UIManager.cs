@@ -26,7 +26,7 @@ public class UIManager : MonoBehaviour
     }
     public void ToggleMenu()
     {
-        menuManager.ToggleMenu();
+        menuManager.PauseGame();
         ToggleTime();
     }
 

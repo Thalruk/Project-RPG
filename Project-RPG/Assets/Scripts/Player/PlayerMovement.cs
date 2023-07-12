@@ -51,6 +51,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = characterController.isGrounded;
         Statehandler();
+        Debug.Log(Time.deltaTime);
         //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
     }
 
@@ -61,7 +62,7 @@ public class PlayerMovement : MonoBehaviour
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
 
-        characterController.Move(((finalDirection * actualSpeed) + velocity) * Time.fixedDeltaTime * Time.timeScale);
+        characterController.Move(((finalDirection * actualSpeed) + velocity) * Time.deltaTime * Time.timeScale);
     }
 
     private void Statehandler()
