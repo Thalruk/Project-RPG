@@ -31,7 +31,6 @@ public class InventoryManager : MonoBehaviour
     {
         toggled = !inventoryPanel.activeSelf;
         inventoryPanel.SetActive(toggled);
-        Time.timeScale = toggled ? 0 : 1;
         RefreshInventory();
     }
 

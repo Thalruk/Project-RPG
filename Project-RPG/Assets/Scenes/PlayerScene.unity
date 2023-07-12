@@ -3898,8 +3898,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc9ad472ed182be4cbd6aececd4cce09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryManager: {fileID: 0}
-  menuManager: {fileID: 0}
+  inventoryManager: {fileID: 1492333776}
+  menuManager: {fileID: 160760778}
 --- !u!1001 &6378746220982968376
 PrefabInstance:
   m_ObjectHideFlags: 0

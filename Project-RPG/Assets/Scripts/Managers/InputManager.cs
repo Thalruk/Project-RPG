@@ -41,12 +41,12 @@ public class InputManager : MonoBehaviour
 
         if (input.UI.Inventory.WasPressedThisFrame())
         {
-            InventoryManager.Instance.ToggleInventory();
+            UIManager.Instance.ToggleInventory();
         }
 
         if(input.UI.Menu.WasPressedThisFrame())
         {
-
+            UIManager.Instance.ToggleMenu();
         }
     }
 }
