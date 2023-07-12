@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1050632825632315676}
   - component: {fileID: 1050632825630988604}
   - component: {fileID: 1050632825629891580}
-  - component: {fileID: 1050632825632081155}
+  - component: {fileID: 8124749580744732910}
   m_Layer: 0
   m_Name: Scroll_Small
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &1050632825630988604
 MeshFilter:
@@ -84,17 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &1050632825632081155
-MeshCollider:
+--- !u!65 &8124749580744732910
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1050632825632081212}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 07c11632f362e9544a7c89ada554f4f7, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.11501987, y: 0.07915159, z: 0.495511}
+  m_Center: {x: -0.02558119, y: 0.04094897, z: 0.0004992411}

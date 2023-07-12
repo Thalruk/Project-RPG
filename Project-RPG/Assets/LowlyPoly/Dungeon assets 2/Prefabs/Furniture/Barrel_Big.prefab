@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5754540700685751215}
   - component: {fileID: 5754540700684424079}
   - component: {fileID: 5754540700683456847}
-  - component: {fileID: 5754540700685389708}
+  - component: {fileID: 5595146160466326788}
   m_Layer: 0
   m_Name: Barrel_Big
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5754540700684424079
 MeshFilter:
@@ -85,17 +85,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5754540700685389708
-MeshCollider:
+--- !u!65 &5595146160466326788
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5754540700685389711}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 40f5762be4fcf5f4fa9151e752d38d16, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 2.5062187, y: 2.7938838, z: 2.0737264}
+  m_Center: {x: 0.00000011920929, y: 1.3991199, z: 0.015011907}

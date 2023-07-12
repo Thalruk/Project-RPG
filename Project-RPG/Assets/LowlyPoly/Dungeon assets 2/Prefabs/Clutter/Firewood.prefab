@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6015801904299752076}
   - component: {fileID: 6015801904298457772}
   - component: {fileID: 6015801904297326700}
-  - component: {fileID: 6015801904299255471}
+  - component: {fileID: 2054345003534432841}
   m_Layer: 0
   m_Name: Firewood
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: -90.00001}
 --- !u!33 &6015801904298457772
 MeshFilter:
@@ -84,17 +84,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &6015801904299255471
-MeshCollider:
+--- !u!65 &2054345003534432841
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6015801904299255468}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: 5f9ecee8406997d4e8e4120512c25f9f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.28983775, y: 0.27124113, z: 0.85425186}
+  m_Center: {x: 0.0008724033, y: 0.0005640387, z: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5981562312196831680}
   - component: {fileID: 5981562312198158816}
   - component: {fileID: 5981562312199125792}
-  - component: {fileID: 5981562312196924897}
+  - component: {fileID: 7590643258681445158}
   m_Layer: 0
   m_Name: Book_Big_Red
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!33 &5981562312198158816
 MeshFilter:
@@ -85,17 +85,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &5981562312196924897
-MeshCollider:
+--- !u!65 &7590643258681445158
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5981562312196924896}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4300000, guid: ca50010b0ae6b8f4c94725ca828dc68f, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.16443224, y: 0.4494854, z: 0.38805932}
+  m_Center: {x: 0.0000002384186, y: 0.22474302, z: 0.020670079}

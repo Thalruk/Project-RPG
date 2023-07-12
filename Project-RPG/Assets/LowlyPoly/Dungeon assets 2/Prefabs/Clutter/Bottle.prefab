@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 567418895677452314}
   - component: {fileID: 3490355613018226623}
   - component: {fileID: 1699207973293591413}
-  - component: {fileID: 3436682783366488569}
+  - component: {fileID: 6452857887358123765}
   m_Layer: 0
   m_Name: Bottle
   m_TagString: Untagged
@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3490355613018226623
 MeshFilter:
@@ -85,17 +85,24 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &3436682783366488569
-MeshCollider:
+--- !u!65 &6452857887358123765
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 906403121377487520}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 6121590469811200223, guid: 764ac3d453b8da24d91a0894ffdc6655, type: 3}
+  serializedVersion: 3
+  m_Size: {x: 0.18097512, y: 0.3504234, z: 0.22151655}
+  m_Center: {x: 6.224768e-16, y: 0.17521164, z: 0.0202707}
