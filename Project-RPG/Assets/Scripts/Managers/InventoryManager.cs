@@ -9,6 +9,8 @@ public class InventoryManager : MonoBehaviour
 
     public GameObject inventoryPanel;
 
+    public bool toggled = false;
+
     public GameObject inventorySlotPanel;
     private InventorySlot[] inventorySlots;
     public GameObject inventorySlot;
@@ -27,7 +29,9 @@ public class InventoryManager : MonoBehaviour
     }
     public void ToggleInventory()
     {
-        inventoryPanel.SetActive(!inventoryPanel.activeSelf);
+        toggled = !inventoryPanel.activeSelf;
+        inventoryPanel.SetActive(toggled);
+        Time.timeScale = toggled ? 0 : 1;
         RefreshInventory();
     }
 

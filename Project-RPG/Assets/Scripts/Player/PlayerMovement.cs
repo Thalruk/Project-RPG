@@ -14,9 +14,10 @@ public class PlayerMovement : MonoBehaviour
     private Camera cam;
 
     [SerializeField] GameObject playerBody;
+    [SerializeField] Animator anim;
 
-    private Vector3 finalDirection;
-    [HideInInspector] public Vector3 cameraDirection;
+    public Vector3 finalDirection;
+     public Vector3 cameraDirection;
 
     [SerializeField] private Vector3 velocity;
 
@@ -60,7 +61,7 @@ public class PlayerMovement : MonoBehaviour
         finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
 
 
-        characterController.Move((finalDirection * actualSpeed + velocity) * Time.fixedDeltaTime);
+        characterController.Move(((finalDirection * actualSpeed) + velocity) * Time.fixedDeltaTime * Time.timeScale);
     }
 
     private void Statehandler()
@@ -83,6 +84,24 @@ public class PlayerMovement : MonoBehaviour
             velocity.y += Physics.gravity.y * Time.deltaTime;
         }
     }
+    private void AnimationHandler()
+    {
+        if (finalDirection.magnitude > 0)
+        {
+            if (isRunning)
+            {
+                anim.SetFloat("Speed", 1.5f);
+            }
+            else
+            {
+                anim.SetFloat("Speed", 0.5f);
+            }
+        }
+        else
+        {
+            anim.SetFloat("Speed", 0);
+        }
+    }
 
     public void Jump()
     {
@@ -100,7 +119,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        HandleRotation();
+        //HandleRotation();
     }
 
     private void HandleRotation()

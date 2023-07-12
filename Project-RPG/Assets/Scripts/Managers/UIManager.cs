@@ -5,36 +5,26 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [SerializeField] private Player player;
+    public static UIManager Instance;
 
-    [SerializeField] Slider healthSlider;
-    [SerializeField] Slider manaSlider;
-    [SerializeField] Slider staminaSlider;
+    [SerializeField] private InventoryManager inventoryManager;
+    [SerializeField] private MenuManager menuManager;
+
 
     private void Awake()
     {
-        healthSlider.maxValue = player.Health.maxValue.Value;
-        healthSlider.value = player.Health.CurrentValue;
-        player.Health.OnValueChanged.AddListener(UpdateHealthSlider);
-
-        manaSlider.maxValue = player.Mana.maxValue.Value;
-        manaSlider.value = player.Mana.CurrentValue;
-        player.Mana.OnValueChanged.AddListener(UpdateManaSlider);
-
-        staminaSlider.maxValue = player.Stamina.maxValue.Value;
-        staminaSlider.value = player.Stamina.CurrentValue;
-        player.Stamina.OnValueChanged.AddListener(UpdateStaminaSlider);
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+        }
+        Instance = this;
     }
-    private void UpdateHealthSlider(int value)
+    public void ToggleInventory()
     {
-        healthSlider.value = value;
+        inventoryManager.ToggleInventory();
     }
-    private void UpdateManaSlider(int value)
+    public void ToggleMenu()
     {
-        manaSlider.value = value;
-    }
-    private void UpdateStaminaSlider(int value)
-    {
-        staminaSlider.value = value;
+        menuManager.ToggleMenu();
     }
 }
