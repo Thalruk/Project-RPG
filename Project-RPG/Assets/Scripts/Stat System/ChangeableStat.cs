@@ -9,7 +9,9 @@ using UnityEngine.Events;
 public class ChangeableStat
 {
     [SerializeField] public Stat maxValue;
+    [Space]
     [SerializeField] private int currentValue;
+    [Space]
     [SerializeField] public Stat regenValue;
     [HideInInspector] public UnityEvent<int> OnValueChanged;
 

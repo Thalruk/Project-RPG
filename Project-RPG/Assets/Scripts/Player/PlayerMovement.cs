@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem.Controls;
@@ -17,11 +18,11 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 finalDirection;
     [HideInInspector] public Vector3 cameraDirection;
 
-    [Header("Movement Settings")]
+    [SerializeField] private Vector3 velocity;
 
+    [Header("Movement Settings")]
+    [SerializeField] private float actualSpeed = 5;
     private int rotationSpeed = 720;
-    [SerializeField] private float actualSpeed;
-    [SerializeField] private float gravity;
 
     [Header("Ground Check")]
     [SerializeField] private float groundCheckHeight = 0.2f;
@@ -31,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     [Header("State")]
     [SerializeField] public bool isGrounded;
     [SerializeField] public bool isRunning;
-    [SerializeField] public bool isOnSlope;
 
     private void Awake()
     {
@@ -49,23 +49,25 @@ public class PlayerMovement : MonoBehaviour
     private void Update()
     {
         isGrounded = characterController.isGrounded;
+        Statehandler();
         //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
-    }
-
-    private void LateUpdate()
-    {
-        HandleRotation();
     }
 
     public void Move(Vector2 inputDirection)
     {
+        cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
+
+        finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
+
+
+        characterController.Move((finalDirection * actualSpeed + velocity) * Time.fixedDeltaTime);
+    }
+
+    private void Statehandler()
+    {
         if (isGrounded)
         {
-            cameraDirection = new Vector3(transform.position.x - cam.transform.position.x, 0, transform.position.z - cam.transform.position.z);
-
-            finalDirection = (inputDirection.y * cameraDirection + inputDirection.x * Vector3.Cross(cameraDirection, Vector3.down)).normalized;
-
-            gravity = -1;
+            velocity.y = -2;
 
             if (isRunning)
             {
@@ -78,18 +80,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            gravity += Physics.gravity.y;
+            velocity.y += Physics.gravity.y * Time.deltaTime;
         }
-
-
-        characterController.Move((finalDirection * actualSpeed + Vector3.up * gravity * Time.fixedDeltaTime) * Time.fixedDeltaTime);
     }
 
     public void Jump()
     {
         if (isGrounded)
         {
-            gravity = player.JumpStrength.Value;
+            velocity.y = player.JumpStrength.Value;
         }
     }
 
@@ -97,6 +96,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckHeight);
+    }
+
+    private void LateUpdate()
+    {
+        HandleRotation();
     }
 
     private void HandleRotation()
@@ -107,10 +111,4 @@ public class PlayerMovement : MonoBehaviour
             playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
     }
-
-    void HandleGravity()
-    {
-
-    }
-
 }

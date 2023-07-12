@@ -25,26 +25,23 @@ public class InputManager : MonoBehaviour
     {
         playerMovement.isRunning = input.Player.Sprint.ReadValue<float>() == 1 ? true : false;
 
-      
-
-        if (input.UI.Inventory.WasPressedThisFrame())
-        {
-            InventoryManager.Instance.ToggleInventory();
-        }
-
-        if (input.Player.Interact.WasPressedThisFrame())
-        {
-            InteractionManager.Instance.Interact();
-        }
-    }
-
-    private void FixedUpdate()
-    {
         if (input.Player.Jump.WasPressedThisFrame())
         {
             playerMovement.Jump();
         }
 
         playerMovement.Move(input.Player.Movement.ReadValue<Vector2>());
+
+
+
+        if (input.Player.Interact.WasPressedThisFrame())
+        {
+            InteractionManager.Instance.Interact();
+        }
+
+        if (input.UI.Inventory.WasPressedThisFrame())
+        {
+            InventoryManager.Instance.ToggleInventory();
+        }
     }
 }
