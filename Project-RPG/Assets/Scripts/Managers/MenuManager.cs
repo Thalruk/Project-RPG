@@ -5,8 +5,17 @@ using UnityEngine;
 public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject menuPanel;
+
+    public GameObject player;
     public bool toggled = false;
-    public void PauseGame()
+
+    public void ResetPosition()
+    {
+       player.transform.position = Vector3.zero;
+        Debug.Log("reset");
+    }
+
+    public void ToggleMenu()
     {
         toggled = !menuPanel.activeSelf;
         menuPanel.SetActive(toggled);

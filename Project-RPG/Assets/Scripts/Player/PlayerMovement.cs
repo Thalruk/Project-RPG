@@ -17,7 +17,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Animator anim;
 
     public Vector3 finalDirection;
-     public Vector3 cameraDirection;
+    public Vector3 cameraDirection;
 
     [SerializeField] private Vector3 velocity;
 
@@ -31,8 +31,10 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("State")]
-    [SerializeField] public bool isGrounded;
+    [SerializeField] private bool isGrounded;
     [SerializeField] public bool isRunning;
+    [SerializeField] private bool isJumping;
+    [SerializeField] private bool isFalling;
 
     private void Awake()
     {
@@ -51,7 +53,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = characterController.isGrounded;
         Statehandler();
-        Debug.Log(Time.deltaTime);
         //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
     }
 
@@ -71,19 +72,16 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2;
 
-            if (isRunning)
-            {
-                actualSpeed = player.runnigSpeed.Value;
-            }
-            else
-            {
-                actualSpeed = player.walkingSpeed.Value;
-            }
+            actualSpeed = isRunning ? player.runnigSpeed.Value : player.walkingSpeed.Value;
         }
         else
         {
             velocity.y += Physics.gravity.y * Time.deltaTime;
         }
+
+
+        isJumping = velocity.y > 0 ? true : false;
+        isFalling = velocity.y < 0 && !isGrounded ? true : false;
     }
     private void AnimationHandler()
     {
@@ -120,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void LateUpdate()
     {
-        //HandleRotation();
+        HandleRotation();
     }
 
     private void HandleRotation()

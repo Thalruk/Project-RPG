@@ -18,15 +18,17 @@ public class UIManager : MonoBehaviour
             Destroy(Instance);
         }
         Instance = this;
+
+        
     }
     public void ToggleInventory()
     {
         inventoryManager.ToggleInventory();
         ToggleTime();
     }
-    public void ToggleMenu()
-    {
-        menuManager.PauseGame();
+    public void ToggleMenu() 
+    { 
+        menuManager.ToggleMenu();
         ToggleTime();
     }
 
@@ -35,10 +37,12 @@ public class UIManager : MonoBehaviour
         if(inventoryManager.toggled || menuManager.toggled)
         {
             Time.timeScale = 0;
+            Cursor.visible = true;
         }
         else
         {
             Time.timeScale = 1;
+            Cursor.visible = false;
         }
     }
 }

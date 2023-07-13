@@ -17,6 +17,6 @@ public class FpsCounter : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(5, 40, 100, 25), "FPS: " + Mathf.Round(count));
+        GUI.Label(new Rect(Screen.width - 100, 25, 100, 25), "FPS: " + Mathf.Round(count));
     }
 }

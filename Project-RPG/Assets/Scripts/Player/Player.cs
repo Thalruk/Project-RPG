@@ -2,21 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : Creature
 {
     public static Player Instance;
 
-    [Header("Stats")]
-    [SerializeField] public ChangeableStat Health;
-    [SerializeField] public ChangeableStat Mana;
-    [SerializeField] public ChangeableStat Stamina;
 
     [Space(10)]
     [Header("Bonus Stats")]
     [SerializeField] public Stat walkingSpeed;
     [SerializeField] public Stat runnigSpeed;
     [SerializeField] public Stat JumpStrength;
-    [SerializeField] public Stat GravityMultiplier;
 
     [Space(10)]
     [Header("Inventory")]
