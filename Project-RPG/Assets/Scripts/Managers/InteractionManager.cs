@@ -53,14 +53,7 @@ public class InteractionManager : MonoBehaviour
         if (interactables.Count > 0)
         {
             interactablePanel.SetActive(true);
-            if (interactables[0].GetType() == typeof(Interactable))
-            {
-                interactableText.text = "Press E to interact";
-            }
-            else if (interactables[0].GetType() == typeof(Pickable))
-            {
-                interactableText.text = "Press E to pick up Item";
-            }
+            interactableText.text = interactables[0].message;
         }
         else
         {

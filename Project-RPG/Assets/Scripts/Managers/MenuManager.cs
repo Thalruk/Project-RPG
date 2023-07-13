@@ -11,7 +11,7 @@ public class MenuManager : MonoBehaviour
 
     public void ResetPosition()
     {
-       player.transform.position = Vector3.zero;
+        player.GetComponent<CharacterController>().transform.position = Vector3.zero;
         Debug.Log("reset");
     }
 

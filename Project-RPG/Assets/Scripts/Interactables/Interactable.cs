@@ -8,7 +8,13 @@ using UnityEngine.Events;
 [Serializable]
 public class Interactable : MonoBehaviour
 {
+
     public string message;
+
+    private void Awake()
+    {
+        message = "Press E to interact!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!";
+    }
     public virtual void Interact()
     {
         Debug.Log($"[{gameObject.name}]->This should not show!");

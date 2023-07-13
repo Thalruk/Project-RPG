@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class Pickable : Interactable
 {
+    private void Awake()
+    {
+        message = "Press E to pick up";
+    }
+
     public override void Interact()
     {
         InventoryManager.Instance.AddItem(GetComponent<ItemContainer>().item);
