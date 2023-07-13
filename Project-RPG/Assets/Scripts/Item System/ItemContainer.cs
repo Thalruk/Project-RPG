@@ -18,6 +18,7 @@ public class ItemContainer : MonoBehaviour
         if(item!= null)
         {
             meshFilter.mesh = item.Mesh;
+            
         }
     }
 
