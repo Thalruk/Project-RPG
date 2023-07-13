@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ContainerInteractable : Interactable
@@ -25,6 +26,9 @@ public class ContainerInteractable : Interactable
             itemContainer.item = item;
             itemContainer.UpdateMesh();
         }
+
+        GetComponent<CapsuleCollider>().enabled = false;
+        InteractionManager.Instance.RemoveInteractable(this);
 
         Items.Clear();
         Debug.Log("container");
