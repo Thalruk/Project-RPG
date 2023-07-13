@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8971399676816529624}
   - component: {fileID: 8971399676815563288}
   - component: {fileID: 8971399676813624615}
+  - component: {fileID: 6482089240450469168}
   m_Layer: 0
   m_Name: Door_Iron_Left
   m_TagString: Untagged
@@ -28,12 +29,12 @@ Transform:
   m_GameObject: {fileID: 8971399676813624536}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &8971399676816529624
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -92,9 +93,33 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8971399676813624536}
   m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
   m_IsTrigger: 0
+  m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 4
+  serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -3636329803436542071, guid: 2fef7facc8502bb4ab10e720dbd39769, type: 3}
+--- !u!111 &6482089240450469168
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8971399676813624536}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 051d1228554514344a0dc00ffc1d6b94, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 051d1228554514344a0dc00ffc1d6b94, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

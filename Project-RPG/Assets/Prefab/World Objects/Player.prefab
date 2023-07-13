@@ -88,9 +88,6 @@ MonoBehaviour:
   JumpStrength:
     baseValue: 6
     statModifiers: []
-  GravityMultiplier:
-    baseValue: 0
-    statModifiers: []
   inventory:
     items:
     - {fileID: 11400000, guid: f381d55e1e19eb64e889d5286e4393f6, type: 2}
@@ -107,20 +104,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1763198286662830656}
+  anim: {fileID: 0}
+  finalDirection: {x: 0, y: 0, z: 0}
   cameraDirection: {x: 0, y: 0, z: 0}
-  groundDrag: 5
-  airMultiplier: 0
-  speed: 0
+  velocity: {x: 0, y: 0, z: 0}
+  actualSpeed: 5
   groundCheckHeight: 0.2
   ground:
     serializedVersion: 2
     m_Bits: 128
-  maxSlopeAngle: 0
-  state: 0
   isGrounded: 0
   isRunning: 0
-  isOnSlope: 0
-  maxForce: 0
+  isJumping: 0
+  isFalling: 0
 --- !u!1 &1763198286662830656
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,6 +166,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 185160433139728343, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 752051637886152489, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -243,6 +243,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4561406473548200586, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4948122169982268793, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5311758382438097843, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7093791603881671045, guid: 60770bdb4dc667c45bea53db0339dc05, type: 3}
