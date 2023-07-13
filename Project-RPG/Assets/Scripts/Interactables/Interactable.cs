@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [Serializable]
+[RequireComponent(typeof(CapsuleCollider))]
 public class Interactable : MonoBehaviour
 {
 
