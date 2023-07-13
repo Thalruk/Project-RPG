@@ -5,7 +5,6 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
 {
     Transform parentAfterDrag;
     public Transform trans;
-    [SerializeField] GameObject itemContainer;
     public void OnPointerDown(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
@@ -46,7 +45,7 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
                 if (eventData.pointerDrag.TryGetComponent(out ItemSlot slot))
                 {
                     Debug.Log("there is even an item");
-                    ItemContainer container = Instantiate(itemContainer, Player.Instance.transform.position + PlayerMovement.Instance.cameraDirection.normalized * 2, Quaternion.identity).GetComponent<ItemContainer>();
+                    ItemContainer container = Instantiate(WorldSettings.Instance.itemContainer, Player.Instance.transform.position + PlayerMovement.Instance.cameraDirection.normalized * 2, Quaternion.identity).GetComponent<ItemContainer>();
                     container.item = slot.item;
                     container.UpdateMesh();
                     InventoryManager.Instance.RemoveItem(slot.item);
