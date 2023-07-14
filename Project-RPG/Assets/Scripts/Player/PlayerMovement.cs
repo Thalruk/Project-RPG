@@ -53,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isGrounded = characterController.isGrounded;
         Statehandler();
+        AnimationHandler();
         //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
     }
 
@@ -73,6 +74,7 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = -2;
 
             actualSpeed = isRunning ? player.runnigSpeed.Value : player.walkingSpeed.Value;
+
         }
         else
         {
@@ -100,6 +102,10 @@ public class PlayerMovement : MonoBehaviour
         {
             anim.SetFloat("Speed", 0);
         }
+
+        anim.SetBool("isJumping", isJumping);
+        anim.SetBool("isFalling", isFalling);
+        anim.SetBool("isGrounded", isGrounded);
     }
 
     public void Jump()
