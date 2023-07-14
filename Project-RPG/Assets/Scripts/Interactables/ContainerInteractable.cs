@@ -20,7 +20,7 @@ public class ContainerInteractable : Interactable
         foreach (Item item in Items)
         {
             Vector3 random = Random.onUnitSphere;
-            Vector3 point = new Vector3(random.x, transform.position.y + 0.5f, random.z) + transform.position;
+            Vector3 point = new Vector3(random.x, transform.position.y, random.z) + transform.position;
 
             ItemContainer itemContainer = Instantiate(WorldSettings.Instance.itemContainer, point, Quaternion.identity).GetComponent<ItemContainer>();
             itemContainer.item = item;
