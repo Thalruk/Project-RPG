@@ -23,13 +23,23 @@ public class UIManager : MonoBehaviour
     }
     public void ToggleInventory()
     {
-        inventoryManager.ToggleInventory();
-        ToggleTime();
+        if(!menuManager.toggled)
+        {
+            inventoryManager.ToggleInventory();
+            ToggleTime();
+        }
     }
     public void ToggleMenu() 
     { 
-        menuManager.ToggleMenu();
-        ToggleTime();
+        if(inventoryManager.toggled)
+        {
+            ToggleInventory();
+        }
+        else
+        {
+            menuManager.ToggleMenu();
+            ToggleTime();
+        }
     }
 
     void ToggleTime()

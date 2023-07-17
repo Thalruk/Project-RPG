@@ -135,4 +135,9 @@ public class PlayerMovement : MonoBehaviour
             playerBody.transform.rotation = Quaternion.RotateTowards(playerBody.transform.rotation, desiredRotation, rotationSpeed * Time.deltaTime);
         }
     }
+
+    public void Attack()
+    {
+        anim.SetTrigger("Attack");
+    }
 }

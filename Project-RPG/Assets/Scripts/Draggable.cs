@@ -1,15 +1,16 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class Draggable : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     Transform parentAfterDrag;
     public Transform trans;
-    public void OnPointerDown(PointerEventData eventData)
+  
+    public void OnPointerClick(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            Debug.Log("Use");
+            eventData.pointerClick.GetComponent<ItemSlot>().item.Use();
         }
     }
 
@@ -49,7 +50,6 @@ public class Draggable : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, 
                     container.item = slot.item;
                     container.UpdateMesh();
                     InventoryManager.Instance.RemoveItem(slot.item);
-                    InventoryManager.Instance.RefreshInventory();
                 }
             }
 

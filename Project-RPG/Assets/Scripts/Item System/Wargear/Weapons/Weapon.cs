@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Armor : Item
+public class Weapon : WargearItem
 {
-    [Header("Armor")]
-    public int defense;
+    [Header("Weapon")]
+    public int damage;
 }

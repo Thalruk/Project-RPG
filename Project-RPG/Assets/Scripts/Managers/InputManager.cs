@@ -32,12 +32,18 @@ public class InputManager : MonoBehaviour
 
         playerMovement.Move(input.Player.Movement.ReadValue<Vector2>());
 
+        if (input.Player.Attack.WasPressedThisFrame())
+        {
+            playerMovement.Attack();
+        }
 
 
         if (input.Player.Interact.WasPressedThisFrame())
         {
             InteractionManager.Instance.Interact();
         }
+
+      
 
         if (input.UI.Inventory.WasPressedThisFrame())
         {

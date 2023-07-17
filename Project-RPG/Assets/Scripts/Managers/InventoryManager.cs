@@ -5,7 +5,10 @@ using UnityEngine;
 public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance;
-    [SerializeField] Player player;
+
+    [Space(10)]
+    [Header("Inventory")]
+    public Inventory inventory;
 
     public GameObject inventoryPanel;
 
@@ -38,7 +41,7 @@ public class InventoryManager : MonoBehaviour
     {
         inventorySlots = inventoryPanel.GetComponentsInChildren<InventorySlot>();
 
-        if ((int)((player.inventory.items.Count + 1) % rowSlotNumber) == 0)
+        if ((int)((inventory.items.Count + 1) % rowSlotNumber) == 0)
         {
             Debug.Log("CRERATE SLOTS");
             for (int i = 0; i < rowSlotNumber; i++)
@@ -50,9 +53,9 @@ public class InventoryManager : MonoBehaviour
         {
             for (int i = 0; i < inventorySlots.Length; i++)
             {
-                if (i < player.inventory.items.Count)
+                if (i < inventory.items.Count)
                 {
-                    inventorySlots[i].Item = player.inventory.items[i];
+                    inventorySlots[i].Item = inventory.items[i];
                 }
                 else
                 {
@@ -67,11 +70,15 @@ public class InventoryManager : MonoBehaviour
 
     public void AddItem(Item item)
     {
-        player.inventory.Add(item);
+        Debug.Log("add");
+        inventory.Add(item);
+        RefreshInventory();
     }
 
     public bool RemoveItem(Item item)
     {
-        return player.inventory.Remove(item);
+        bool removed = inventory.Remove(item);
+        RefreshInventory();
+        return removed;
     }
 }

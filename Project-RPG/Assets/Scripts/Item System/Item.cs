@@ -24,4 +24,9 @@ public class Item : ScriptableObject
     public Sprite Sprite;
     public Mesh Mesh;
     public Rarity Rarity;
+
+    public virtual void Use()
+    {
+        Debug.Log(Name + "have been used");
+    }
 }

@@ -13,11 +13,6 @@ public class Player : Creature
     [SerializeField] public Stat runnigSpeed;
     [SerializeField] public Stat JumpStrength;
 
-    [Space(10)]
-    [Header("Inventory")]
-    public Inventory inventory;
-
-
     private void Awake()
     {
         if (Instance != null && Instance != this)
