@@ -14,9 +14,9 @@ public class InventoryManager : MonoBehaviour
 
     public bool toggled = false;
 
-    public GameObject inventorySlotPanel;
+    [SerializeField] private GameObject inventorySlotPanel;
     private InventorySlot[] inventorySlots;
-    public GameObject inventorySlot;
+    [SerializeField] private GameObject inventorySlot;
 
     public int rowSlotNumber;
 

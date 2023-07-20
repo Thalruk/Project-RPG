@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private InventoryManager inventoryManager;
     [SerializeField] private MenuManager menuManager;
+    [SerializeField] private WargearManager wargearManager;
 
 
     private void Awake()
@@ -19,32 +20,46 @@ public class UIManager : MonoBehaviour
         }
         Instance = this;
 
-        
+
     }
+  
+    public void ToggleMenu()
+    {
+        if (inventoryManager.toggled)
+        {
+            ToggleInventory();
+        }
+
+        if (wargearManager.toggled)
+        {
+            ToggleWargear();
+        }
+
+        menuManager.ToggleMenu();
+        ToggleTime();
+    }
+
     public void ToggleInventory()
     {
-        if(!menuManager.toggled)
+        if (!menuManager.toggled)
         {
             inventoryManager.ToggleInventory();
             ToggleTime();
         }
     }
-    public void ToggleMenu() 
-    { 
-        if(inventoryManager.toggled)
+
+    public void ToggleWargear()
+    {
+        if (!menuManager.toggled)
         {
-            ToggleInventory();
-        }
-        else
-        {
-            menuManager.ToggleMenu();
+            inventoryManager.ToggleInventory();
             ToggleTime();
         }
     }
 
     void ToggleTime()
     {
-        if(inventoryManager.toggled || menuManager.toggled)
+        if (inventoryManager.toggled || menuManager.toggled)
         {
             Time.timeScale = 0;
             Cursor.visible = true;

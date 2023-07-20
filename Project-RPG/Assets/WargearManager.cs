@@ -10,6 +10,12 @@ public class WargearManager : MonoBehaviour
     [Header("Wargear")]
     public Wargear wargear;
 
+    public bool toggled = false;
+
+    [Header("WargerUI")]
+    public GameObject wargearPanel;
+
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -19,8 +25,27 @@ public class WargearManager : MonoBehaviour
         Instance = this;
     }
 
-    public void Equip(Item item)
+
+
+    public void ToggleInventory()
+    {
+        toggled = !wargearPanel.activeSelf;
+        wargearPanel.SetActive(toggled);
+        RefreshWargear();
+    }
+
+    public void RefreshWargear()
+    {
+        Debug.Log("refresh wargear panel");
+    }
+
+
+
+
+    public void Equip(WargearItem item)
     {
         wargear.Equip(item);
     }
+
+
 }
