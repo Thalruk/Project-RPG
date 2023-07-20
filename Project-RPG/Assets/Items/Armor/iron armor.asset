@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 776909fd110a15b4ca739559dd7d53ab, type: 3}
+  m_Name: iron armor
+  m_EditorClassIdentifier: 
+  Name: iron armor
+  Description: heavy iron armor
+  Sprite: {fileID: 21300000, guid: 432c58251af00414ea12b11f324aa0ca, type: 3}
+  Mesh: {fileID: -7575218982966284274, guid: de13a7420582ded45a8d7d3f96889aca, type: 3}
+  Rarity: 0
+  Effects:
+  - affectedStat: 0
+    statModifier:
+      value: 40
+      type: 0
+  - affectedStat: 3
+    statModifier:
+      value: -20
+      type: 1
+  - affectedStat: 4
+    statModifier:
+      value: -5
+      type: 0
+  armorType: 1
+  defense: 20

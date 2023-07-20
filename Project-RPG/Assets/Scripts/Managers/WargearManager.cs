@@ -16,6 +16,13 @@ public class WargearManager : MonoBehaviour
     public GameObject wargearPanel;
     public GameObject armorSlot;
 
+    [Header("Player graphics")]
+    public GameObject arms;
+    public GameObject legs;
+    public GameObject feet;
+    public GameObject leatherArmor;
+    public GameObject ironArmor;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -41,10 +48,39 @@ public class WargearManager : MonoBehaviour
         armorSlot.GetComponent<InventorySlot>().Refresh();
     }
 
+    public void RefreshSkin()
+    {
+        if(wargear.armor == null) 
+        {
+            arms.SetActive(true);
+            legs.SetActive(true);
+            feet.SetActive(true);
+        }
+        else
+        {
+            switch (wargear.armor.armorType)
+            {
+                case ArmorType.Leather:
+                    arms.SetActive(false);
+                    legs.SetActive(false);
+                    feet.SetActive(false);
+                    leatherArmor.SetActive(true);
+                    break;
+                case ArmorType.Iron:
+                    arms.SetActive(false);
+                    legs.SetActive(false);
+                    feet.SetActive(false);
+                    ironArmor.SetActive(true);
+                    break;
+            }
+        }
+    }
+
 
     public void Equip(WargearItem item)
     {
         wargear.Equip(item);
+        RefreshSkin();
         RefreshWargear();
     }
 }
