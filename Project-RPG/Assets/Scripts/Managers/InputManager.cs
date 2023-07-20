@@ -24,26 +24,22 @@ public class InputManager : MonoBehaviour
     private void Update()
     {
         playerMovement.isRunning = input.Player.Sprint.ReadValue<float>() == 1 ? true : false;
-
         if (input.Player.Jump.WasPressedThisFrame())
         {
             playerMovement.Jump();
         }
-
         playerMovement.Move(input.Player.Movement.ReadValue<Vector2>());
+
 
         if (input.Player.Attack.WasPressedThisFrame())
         {
             playerMovement.Attack();
         }
-
-
         if (input.Player.Interact.WasPressedThisFrame())
         {
             InteractionManager.Instance.Interact();
         }
 
-      
 
         if (input.UI.Inventory.WasPressedThisFrame())
         {
@@ -53,6 +49,10 @@ public class InputManager : MonoBehaviour
         if(input.UI.Menu.WasPressedThisFrame())
         {
             UIManager.Instance.ToggleMenu();
+        }
+        if (input.UI.Character.WasPressedThisFrame())
+        {
+           UIManager.Instance.ToggleWargear();
         }
     }
 }

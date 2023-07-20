@@ -7,9 +7,9 @@ public class UIManager : MonoBehaviour
 {
     public static UIManager Instance;
 
-    [SerializeField] private InventoryManager inventoryManager;
-    [SerializeField] private MenuManager menuManager;
-    [SerializeField] private WargearManager wargearManager;
+    private InventoryManager inventoryManager;
+    private MenuManager menuManager;
+    private WargearManager wargearManager;
 
 
     private void Awake()
@@ -20,23 +20,26 @@ public class UIManager : MonoBehaviour
         }
         Instance = this;
 
-
+        inventoryManager = InventoryManager.Instance;
+        menuManager = MenuManager.Instance;
+        wargearManager = WargearManager.Instance;
     }
-  
+
     public void ToggleMenu()
     {
         if (inventoryManager.toggled)
         {
             ToggleInventory();
         }
-
-        if (wargearManager.toggled)
+        else if (wargearManager.toggled)
         {
             ToggleWargear();
         }
-
-        menuManager.ToggleMenu();
-        ToggleTime();
+        else
+        {
+            menuManager.ToggleMenu();
+            ToggleTime();
+        }
     }
 
     public void ToggleInventory()
@@ -52,14 +55,14 @@ public class UIManager : MonoBehaviour
     {
         if (!menuManager.toggled)
         {
-            inventoryManager.ToggleInventory();
+            wargearManager.ToggleWargear();
             ToggleTime();
         }
     }
 
     void ToggleTime()
     {
-        if (inventoryManager.toggled || menuManager.toggled)
+        if (inventoryManager.toggled || menuManager.toggled || wargearManager.toggled)
         {
             Time.timeScale = 0;
             Cursor.visible = true;

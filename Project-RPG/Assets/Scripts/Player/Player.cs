@@ -9,8 +9,8 @@ public class Player : Creature
 
     [Space(10)]
     [Header("Bonus Stats")]
-    [SerializeField] public Stat walkingSpeed;
-    [SerializeField] public Stat runnigSpeed;
+    [SerializeField] public Stat WalkingSpeed;
+    [SerializeField] public Stat RunningSpeed;
     [SerializeField] public Stat JumpStrength;
 
     private void Awake()

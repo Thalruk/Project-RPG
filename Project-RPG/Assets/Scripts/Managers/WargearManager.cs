@@ -14,7 +14,7 @@ public class WargearManager : MonoBehaviour
 
     [Header("WargerUI")]
     public GameObject wargearPanel;
-
+    public GameObject armorSlot;
 
     private void Awake()
     {
@@ -27,7 +27,7 @@ public class WargearManager : MonoBehaviour
 
 
 
-    public void ToggleInventory()
+    public void ToggleWargear()
     {
         toggled = !wargearPanel.activeSelf;
         wargearPanel.SetActive(toggled);
@@ -37,15 +37,14 @@ public class WargearManager : MonoBehaviour
     public void RefreshWargear()
     {
         Debug.Log("refresh wargear panel");
+        armorSlot.GetComponent<InventorySlot>().Item = wargear.armor;
+        armorSlot.GetComponent<InventorySlot>().Refresh();
     }
-
-
 
 
     public void Equip(WargearItem item)
     {
         wargear.Equip(item);
+        RefreshWargear();
     }
-
-
 }

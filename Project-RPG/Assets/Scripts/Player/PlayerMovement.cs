@@ -67,7 +67,7 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = -2;
 
-            actualSpeed = isRunning ? player.runnigSpeed.Value : player.walkingSpeed.Value;
+            actualSpeed = isRunning ? player.RunningSpeed.Value : player.WalkingSpeed.Value;
 
         }
         else
