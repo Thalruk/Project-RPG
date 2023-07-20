@@ -25,11 +25,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float actualSpeed = 5;
     private int rotationSpeed = 720;
 
-    [Header("Ground Check")]
-    [SerializeField] private float groundCheckHeight = 0.2f;
-    [SerializeField] private LayerMask ground;
-
-
     [Header("State")]
     [SerializeField] private bool isGrounded;
     [SerializeField] public bool isRunning;
@@ -54,7 +49,6 @@ public class PlayerMovement : MonoBehaviour
         isGrounded = characterController.isGrounded;
         Statehandler();
         AnimationHandler();
-        //Physics.Raycast(transform.position, Vector3.down, groundCheckHeight, ground);
     }
 
     public void Move(Vector2 inputDirection)
@@ -115,13 +109,6 @@ public class PlayerMovement : MonoBehaviour
             velocity.y = player.JumpStrength.Value;
         }
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckHeight);
-    }
-
     private void LateUpdate()
     {
         HandleRotation();
