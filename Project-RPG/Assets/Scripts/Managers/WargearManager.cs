@@ -14,7 +14,8 @@ public class WargearManager : MonoBehaviour
 
     [Header("WargerUI")]
     public GameObject wargearPanel;
-    public GameObject armorSlot;
+    public InventorySlot weaponSlot;
+    public InventorySlot armorSlot;
 
     [Header("Player graphics")]
     public GameObject arms;
@@ -32,8 +33,6 @@ public class WargearManager : MonoBehaviour
         Instance = this;
     }
 
-
-
     public void ToggleWargear()
     {
         toggled = !wargearPanel.activeSelf;
@@ -44,8 +43,10 @@ public class WargearManager : MonoBehaviour
     public void RefreshWargear()
     {
         Debug.Log("refresh wargear panel");
-        armorSlot.GetComponent<InventorySlot>().Item = wargear.armor;
-        armorSlot.GetComponent<InventorySlot>().Refresh();
+        weaponSlot.Item = wargear.weapon;
+        weaponSlot.Refresh();
+        armorSlot.Item = wargear.armor;
+        armorSlot.Refresh();
     }
 
     public void RefreshSkin()
@@ -65,11 +66,13 @@ public class WargearManager : MonoBehaviour
                     legs.SetActive(false);
                     feet.SetActive(false);
                     leatherArmor.SetActive(true);
+                    ironArmor.SetActive(false);
                     break;
                 case ArmorType.Iron:
                     arms.SetActive(false);
                     legs.SetActive(false);
                     feet.SetActive(false);
+                    leatherArmor.SetActive(false);
                     ironArmor.SetActive(true);
                     break;
             }
@@ -81,6 +84,19 @@ public class WargearManager : MonoBehaviour
     {
         wargear.Equip(item);
         RefreshSkin();
-        RefreshWargear();
+        if(toggled)
+        {
+            RefreshWargear();
+        }
+    }
+
+    public void Dequip(WargearItem item)
+    {
+        wargear.Dequip(item);
+        RefreshSkin();
+        if (toggled)
+        {
+            RefreshWargear();
+        }
     }
 }

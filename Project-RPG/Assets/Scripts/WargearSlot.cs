@@ -4,13 +4,11 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class WargearSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     public Item item;
     public Image image;
     public Image Background;
-
-    public bool wargearSlot = false;
 
     [SerializeField] private Sprite commonBackground;
     [SerializeField] private Sprite uncommonBackground;
@@ -76,14 +74,7 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
     {
         if (eventData.button == PointerEventData.InputButton.Right)
         {
-            if (wargearSlot)
-            {
-                WargearManager.Instance.Dequip((WargearItem)item);
-            }
-            else
-            {
-                item.Use();
-            }
+            eventData.pointerClick.GetComponent<ItemSlot>().item.Use();
         }
     }
 

@@ -62,7 +62,6 @@ GameObject:
   - component: {fileID: 5237541701506526074}
   - component: {fileID: 2645766250949457429}
   - component: {fileID: 989276262608332025}
-  - component: {fileID: 7749251607587713202}
   m_Layer: 5
   m_Name: ItemSprite
   m_TagString: Untagged
@@ -150,20 +149,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7749251607587713202
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4614551649626493488}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c67164af33afd4b42a830530f4a128d8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  trans: {fileID: 0}
-  itemContainer: {fileID: 780243143657130672, guid: 192152d2518377e46a1328770d4b940b, type: 3}
 --- !u!1 &6775005351084133455
 GameObject:
   m_ObjectHideFlags: 0

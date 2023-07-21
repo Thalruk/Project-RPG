@@ -32,16 +32,24 @@ public class Wargear
             weapon = (Weapon)item;
         }
 
-        foreach (ItemEffect effect in item.Effects)
-        {
-            actualEffects.Add(effect);
-        }
-        ApplyEffects();
+        //foreach (ItemEffect effect in item.Effects)
+        //{
+        //    actualEffects.Add(effect);
+        //}
+        //ApplyEffects();
     }
 
     public void Dequip(WargearItem item)
     {
         InventoryManager.Instance.AddItem(item);
+        if(item.GetType().BaseType == typeof(Weapon))
+        {
+            weapon = null;
+        }
+        else if (item.GetType().BaseType == typeof(Armor))
+        {
+            armor = null;
+        }
     }
 
     public void ApplyEffects()
