@@ -11,8 +11,10 @@ public class Target : MonoBehaviour
         health.CurrentValue = health.maxValue.Value;
     }
 
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
+
+        Debug.Log("is being attacked");
         health.Decrease(damage);
 
         if(health.CurrentValue == 0 )

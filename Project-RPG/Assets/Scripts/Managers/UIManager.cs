@@ -20,9 +20,12 @@ public class UIManager : MonoBehaviour
         }
         Instance = this;
 
+
         inventoryManager = InventoryManager.Instance;
         menuManager = MenuManager.Instance;
         wargearManager = WargearManager.Instance;
+
+        ToggleTime();
     }
 
     public void ToggleMenu()

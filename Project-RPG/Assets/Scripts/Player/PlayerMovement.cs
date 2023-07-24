@@ -125,17 +125,21 @@ public class PlayerMovement : MonoBehaviour
 
     public void Attack()
     {
-        switch (WargearManager.Instance.wargear.weapon.weaponType)
+        if (WargearManager.Instance.wargear.weapon != null)
         {
-            case WeaponType.OneHanded:
-                anim.SetTrigger("OneHandAttack");
-                break;
-            case WeaponType.TwoHanded:
-                anim.SetTrigger("TwoHandAttack");
-                break;
-            default:
-                anim.SetTrigger("OneHandAttack");
-                break;
+            switch (WargearManager.Instance.wargear.weapon.weaponType)
+            {
+                case WeaponType.OneHanded:
+                    anim.SetTrigger("OneHandAttack");
+                    break;
+                case WeaponType.TwoHanded:
+                    anim.SetTrigger("TwoHandAttack");
+                    break;
+                default:
+                    anim.SetTrigger("OneHandAttack");
+                    Debug.Log("ni ma broni heh");
+                    break;
+            }
         }
     }
 }

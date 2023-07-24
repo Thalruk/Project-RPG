@@ -10,6 +10,7 @@ public class WeaponHitter : MonoBehaviour
         {
             if (other.TryGetComponent<Target>(out Target target))
             {
+                Debug.Log("hit" + other.name);
                 target.TakeDamage(WargearManager.Instance.wargear.weapon.damage);
             }
         }
