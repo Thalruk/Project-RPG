@@ -17,12 +17,17 @@ public class WargearManager : MonoBehaviour
     public InventorySlot weaponSlot;
     public InventorySlot armorSlot;
 
-    [Header("Player graphics")]
+    [Header("Player armor")]
     public GameObject arms;
     public GameObject legs;
     public GameObject feet;
     public GameObject leatherArmor;
     public GameObject ironArmor;
+
+    [Header("Player weapon")]
+    public GameObject axe;
+    public GameObject sword;
+    public GameObject greatsword;
 
     private void Awake()
     {
@@ -49,9 +54,9 @@ public class WargearManager : MonoBehaviour
         armorSlot.Refresh();
     }
 
-    public void RefreshSkin()
+    public void RefreshArmor()
     {
-        if(wargear.armor == null) 
+        if (wargear.armor == null)
         {
             arms.SetActive(true);
             legs.SetActive(true);
@@ -79,12 +84,44 @@ public class WargearManager : MonoBehaviour
         }
     }
 
+    public void RefreshWeapon()
+    {
+        if (wargear.weapon == null)
+        {
+            axe.SetActive(false);
+            sword.SetActive(false);
+            greatsword.SetActive(false);
+        }
+        else
+        {
+            if (wargear.weapon.GetType() == typeof(Axe))
+            {
+                axe.SetActive(true);
+                sword.SetActive(false);
+                greatsword.SetActive(false);
+            }
+            else if (wargear.weapon.GetType() == typeof(Sword))
+            {
+                axe.SetActive(false);
+                sword.SetActive(true);
+                greatsword.SetActive(false);
+            }
+            else if(wargear.weapon.GetType() == typeof(Greatsword))
+            {
+                axe.SetActive(false);
+                sword.SetActive(false);
+                greatsword.SetActive(true);
+            }
+        }
+    }
+
 
     public void Equip(WargearItem item)
     {
         wargear.Equip(item);
-        RefreshSkin();
-        if(toggled)
+        RefreshArmor();
+        RefreshWeapon();
+        if (toggled)
         {
             RefreshWargear();
         }
@@ -93,7 +130,8 @@ public class WargearManager : MonoBehaviour
     public void Dequip(WargearItem item)
     {
         wargear.Dequip(item);
-        RefreshSkin();
+        RefreshArmor();
+        RefreshWeapon();
         if (toggled)
         {
             RefreshWargear();

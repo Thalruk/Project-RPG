@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: iron sword
   m_EditorClassIdentifier: 
   Name: iron sword
-  Description: standard sword
+  Description: standrard iron sword
   Sprite: {fileID: 21300000, guid: a532a7b13e1c75f49a8a909d3fec1848, type: 3}
-  Mesh: {fileID: -2490357807671972370, guid: d00dec123be83b445adbe6c8f3f02f41, type: 3}
-  Rarity: 4
-  damage: 10
+  Mesh: {fileID: 4300000, guid: 5a182dff3c472464eaf0b2316e07388d, type: 3}
+  Rarity: 0
+  Effects: []
+  damage: 15

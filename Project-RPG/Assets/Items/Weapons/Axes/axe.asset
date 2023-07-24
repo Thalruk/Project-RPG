@@ -15,7 +15,8 @@ MonoBehaviour:
   Name: axe
   Description: standard axe
   Sprite: {fileID: 21300000, guid: bc2a42b5750cea3418f36b65112e199c, type: 3}
-  Mesh: {fileID: -9035476687761559398, guid: a1f67aa07796fb24d9b3adf4cc449805, type: 3}
+  Mesh: {fileID: -2487380500608498712, guid: 6675c6557a13efc4aacb9db75446046f, type: 3}
   Rarity: 0
   Effects: []
   damage: 20
+  weaponType: 0
