@@ -51,6 +51,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   item: {fileID: 0}
   meshFilter: {fileID: 7445854471473305336}
+  meshRenderer: {fileID: 1428957437314712124}
 --- !u!114 &6932710480854498002
 MonoBehaviour:
   m_ObjectHideFlags: 0

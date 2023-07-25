@@ -23,6 +23,7 @@ public class Item : ScriptableObject
     public string Description;
     public Sprite Sprite;
     public Mesh Mesh;
+    public Material[] Materials;
     public Rarity Rarity;
 
     public virtual void Use()

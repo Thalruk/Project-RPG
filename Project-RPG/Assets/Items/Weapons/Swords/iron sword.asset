@@ -16,6 +16,10 @@ MonoBehaviour:
   Description: standrard iron sword
   Sprite: {fileID: 21300000, guid: a532a7b13e1c75f49a8a909d3fec1848, type: 3}
   Mesh: {fileID: 4300000, guid: 5a182dff3c472464eaf0b2316e07388d, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 57c5c45402f367749a31d5f99048f829, type: 2}
+  - {fileID: 2100000, guid: 2cb987137b739894682ccea9106cd69b, type: 2}
   Rarity: 0
   Effects: []
   damage: 15
+  weaponType: 0

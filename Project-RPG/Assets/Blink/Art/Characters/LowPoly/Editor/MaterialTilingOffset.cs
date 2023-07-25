@@ -19,10 +19,10 @@ namespace BLINK.Tools
         private int sliderValue;
         
         
-        [MenuItem("BLINK/Material Tiling Offset")]
+        [MenuItem("BLINK/Materials Tiling Offset")]
         private static void OpenWindow()
         {
-            var window = (MaterialTilingOffset) GetWindow(typeof(MaterialTilingOffset), false,"Blink Material Tiling Offset");
+            var window = (MaterialTilingOffset) GetWindow(typeof(MaterialTilingOffset), false,"Blink Materials Tiling Offset");
             window.minSize = new Vector2(300, 400);
             GUI.contentColor = Color.white;
             window.Show();
@@ -144,7 +144,7 @@ namespace BLINK.Tools
         private void CreateMaterial()
         {
             string path = "Assets/Blink/Art/Weapons/LowPoly/MegaWeaponPack1/Materials_MWP1/";
-            AssetDatabase.CreateAsset(newMaterial, path + AssetDatabase.GenerateUniqueAssetPath("New MWP1 Material") + ".mat");
+            AssetDatabase.CreateAsset(newMaterial, path + AssetDatabase.GenerateUniqueAssetPath("New MWP1 Materials") + ".mat");
         }
 
         private void SaveSelection()

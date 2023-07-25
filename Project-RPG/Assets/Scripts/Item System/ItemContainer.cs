@@ -7,6 +7,7 @@ public class ItemContainer : MonoBehaviour
 {
     public Item item;
     [SerializeField] private MeshFilter meshFilter;
+    [SerializeField] private MeshRenderer meshRenderer;
 
     private void Awake()
     {
@@ -26,6 +27,7 @@ public class ItemContainer : MonoBehaviour
         if (item != null)
         {
             meshFilter.mesh = item.Mesh;
+            meshRenderer.materials = item.Materials;
         }
     }
 }
