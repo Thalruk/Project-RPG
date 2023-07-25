@@ -7,6 +7,8 @@ public class TargetDummy : Target
 {
     Animator anim;
     [SerializeField] Slider healthSlider;
+    [SerializeField] Image healthSliderFill;
+
     [SerializeField] Vector3 healtSliderOffset;
 
     private void Awake()
@@ -23,7 +25,7 @@ public class TargetDummy : Target
         healthSlider.transform.rotation = Camera.main.transform.rotation;
         healthSlider.transform.position = transform.position + healtSliderOffset;
     }
-    public override void OnHit(int damage)
+    public override void TakeDamage(int damage)
     {
         anim.SetTrigger("Attacked");
         health.Decrease(damage);
@@ -32,7 +34,6 @@ public class TargetDummy : Target
 
         if (health.CurrentValue == 0)
         {
-            Debug.Log("DEAD");
             anim.SetTrigger("Died");
         }
     }
@@ -40,10 +41,12 @@ public class TargetDummy : Target
     private void UpdateHealtSlider()
     {
         healthSlider.value = health.CurrentValue;
+        healthSliderFill.color = Color.Lerp(Color.red, Color.black, (health.maxValue.Value - health.CurrentValue) / (float)health.maxValue.Value);
+        Debug.Log((health.maxValue.Value - health.CurrentValue) / (float)health.maxValue.Value);
     }
 
-    public void Destroy()
+    public void OnDeath()
     {
-        Destroy(gameObject);
+        healthSlider.gameObject.SetActive(false);
     }
 }

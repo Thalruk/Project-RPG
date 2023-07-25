@@ -7,6 +7,7 @@ public class ContainerInteractable : Interactable
 {
     public List<Item> Items;
     Animator anim;
+    [SerializeField] private Vector3 offset;
 
     private void Awake()
     {
@@ -19,8 +20,8 @@ public class ContainerInteractable : Interactable
         anim.SetTrigger("Open");
         foreach (Item item in Items)
         {
-            Vector3 random = Random.onUnitSphere;
-            Vector3 point = new Vector3(random.x, 0, random.z) + transform.position;
+            Vector3 random = Random.insideUnitCircle;
+            Vector3 point = new Vector3(random.x, 0, random.z) + transform.position + offset;
 
             ItemContainer itemContainer = Instantiate(WorldSettings.Instance.itemContainer, point, Quaternion.identity).GetComponent<ItemContainer>();
             itemContainer.item = item;
@@ -32,5 +33,9 @@ public class ContainerInteractable : Interactable
 
         Items.Clear();
         Debug.Log("container");
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position + offset, 1);
     }
 }

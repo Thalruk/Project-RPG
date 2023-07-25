@@ -52,6 +52,7 @@ MonoBehaviour:
   item: {fileID: 0}
   meshFilter: {fileID: 7445854471473305336}
   meshRenderer: {fileID: 1428957437314712124}
+  defaultMaterial: {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!114 &6932710480854498002
 MonoBehaviour:
   m_ObjectHideFlags: 0

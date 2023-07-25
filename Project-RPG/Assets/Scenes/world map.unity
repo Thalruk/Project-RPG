@@ -18381,6 +18381,10 @@ PrefabInstance:
       value: Press E to open chest
       objectReference: {fileID: 0}
     - target: {fileID: 5742673361043425639, guid: 944bff624466e4242a3377fba75ddaf3, type: 3}
+      propertyPath: offset.z
+      value: 1.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5742673361043425639, guid: 944bff624466e4242a3377fba75ddaf3, type: 3}
       propertyPath: Items.Array.size
       value: 1
       objectReference: {fileID: 0}
