@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5754540700684424079}
   - component: {fileID: 5754540700683456847}
   - component: {fileID: 5595146160466326788}
+  - component: {fileID: 718232915383254915}
   m_Layer: 0
   m_Name: Barrel_Big
   m_TagString: Untagged
@@ -106,3 +107,26 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.5062187, y: 2.7938838, z: 2.0737264}
   m_Center: {x: 0.00000011920929, y: 1.3991199, z: 0.015011907}
+--- !u!114 &718232915383254915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754540700685389711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b380d32d2b3404eb1d8b574452f9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    maxValue:
+      baseValue: 70
+      statModifiers: []
+    currentValue: 0
+    regenValue:
+      baseValue: 0
+      statModifiers: []
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []

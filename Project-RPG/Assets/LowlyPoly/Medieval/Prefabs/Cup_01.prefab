@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3928086577897019586}
   - component: {fileID: 1254158658310827016}
   - component: {fileID: 4607400074290606754}
+  - component: {fileID: 2105522650439617303}
   m_Layer: 0
   m_Name: Cup_01
   m_TagString: Untagged
@@ -101,7 +102,30 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 0.20288292, y: 0.19653426, z: 0.13526343}
   m_Center: {x: -0.03380974, y: 0.098267116, z: 0.000000059604645}
+--- !u!114 &2105522650439617303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749663347052858845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36b380d32d2b3404eb1d8b574452f9b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health:
+    maxValue:
+      baseValue: 5
+      statModifiers: []
+    currentValue: 0
+    regenValue:
+      baseValue: 0
+      statModifiers: []
+    OnValueChanged:
+      m_PersistentCalls:
+        m_Calls: []

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ca8faf065238d749b704d8412d8dd71, type: 3}
+  m_Name: axe legendary
+  m_EditorClassIdentifier: 
+  Name: axe
+  Description: standard axe
+  Sprite: {fileID: 21300000, guid: bc2a42b5750cea3418f36b65112e199c, type: 3}
+  Mesh: {fileID: -2487380500608498712, guid: 6675c6557a13efc4aacb9db75446046f, type: 3}
+  Materials:
+  - {fileID: 2100000, guid: 49c61f7d98b36a6438e5deb41f0f7207, type: 2}
+  Rarity: 1
+  Effects: []
+  damage: 20
+  weaponType: 0
