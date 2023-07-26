@@ -18,7 +18,7 @@ MonoBehaviour:
   Mesh: {fileID: -2487380500608498712, guid: 6675c6557a13efc4aacb9db75446046f, type: 3}
   Materials:
   - {fileID: 2100000, guid: 49c61f7d98b36a6438e5deb41f0f7207, type: 2}
-  Rarity: 1
+  Rarity: 5
   Effects: []
   damage: 20
   weaponType: 0

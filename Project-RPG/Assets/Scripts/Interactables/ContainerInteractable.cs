@@ -26,13 +26,14 @@ public class ContainerInteractable : Interactable
             ItemContainer itemContainer = Instantiate(WorldSettings.Instance.itemContainer, point, Quaternion.identity).GetComponent<ItemContainer>();
             itemContainer.item = item;
             itemContainer.UpdateMesh();
+            Debug.Log("container");
+
         }
 
         GetComponent<CapsuleCollider>().enabled = false;
         InteractionManager.Instance.RemoveInteractable(this);
 
         Items.Clear();
-        Debug.Log("container");
     }
     private void OnDrawGizmos()
     {
