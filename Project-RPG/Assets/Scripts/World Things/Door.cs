@@ -11,6 +11,7 @@ public class Door : MonoBehaviour
     private void Awake()
     {
         anim = GetComponent<Animator>();
+        source = GetComponent<AudioSource>();
     }
 
     public void ChangeState()
