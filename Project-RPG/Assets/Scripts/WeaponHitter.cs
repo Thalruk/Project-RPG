@@ -4,13 +4,26 @@ using UnityEngine;
 
 public class WeaponHitter : MonoBehaviour
 {
+    public bool isOnPlayer = true;
+    public Enemy enemy;
+    public Player player;
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag != "Player")
+        if (isOnPlayer)
         {
-            if (other.TryGetComponent<Target>(out Target target))
+            if (other.tag != "Player")
             {
-                target.TakeDamage(WargearManager.Instance.wargear.weapon.damage);
+                if (other.TryGetComponent<Target>(out Target target))
+                {
+                    target.TakeDamage(WargearManager.Instance.wargear.weapon.damage);
+                }
+            }
+        }
+        else
+        {
+            if (other.tag == "Player")
+            {
+                player.TakeDamage(enemy.weapon.damage);
             }
         }
     }

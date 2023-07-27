@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
+using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,57 +12,83 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRadius;
 
     [SerializeField] private GameObject player;
+    Vector3 directionToPlayer;
+    float distance;
 
     NavMeshAgent agent;
     [SerializeField] Animator anim;
     [SerializeField] private SphereCollider sphereCollider;
 
+    [Header("Equipment")]
+    public Weapon weapon;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
         sphereCollider.radius = detectionRadius;
+        agent.updateRotation = false;
     }
 
     private void Update()
     {
         Move();
-        //HandleAnimation();
     }
 
     private void Move()
     {
         if (player != null)
         {
-            Vector3 direction = (player.transform.position - transform.position);
-            float distane = direction.magnitude;
+            RotateTowardsPlayer();
+            directionToPlayer = (player.transform.position - transform.position);
+            distance = directionToPlayer.magnitude;
 
-            if (distane <= chaseRadius && distane > attackRadius)
+            if (distance <= chaseRadius && distance > attackRadius)
             {
-                Debug.Log("moving to player");
                 agent.isStopped = false;
-                agent.destination = player.transform.position - direction.normalized * attackRadius;
+                agent.destination = player.transform.position - directionToPlayer.normalized * 0.9f * attackRadius;
+                anim.SetFloat("Speed", 1);
             }
-            else if (distane <= attackRadius)
+            else if (distance <= attackRadius)
             {
-                Debug.Log("attacking player");
-
                 agent.isStopped = true;
+                anim.SetFloat("Speed", 0);
+                anim.SetTrigger("AttackOneHand");
             }
         }
-
-        Debug.Log(agent.isStopped);
+        else
+        {
+            agent.isStopped = true;
+            anim.SetFloat("Speed", 0);
+        }
     }
 
     private void HandleAnimation()
     {
-        if (agent.isStopped)
+        if (distance <= chaseRadius && distance > attackRadius)
         {
-            anim.SetFloat("Speed", 0);
+            if (agent.isStopped)
+            {
+                anim.SetFloat("Speed", 0);
+            }
+            else
+            {
+                anim.SetFloat("Speed", 1);
+            }
         }
-        else
+
+        if (player != null)
         {
-            anim.SetFloat("Speed", 1);
+            if (distance <= attackRadius)
+            {
+                anim.SetFloat("Speed", 0);
+                anim.SetTrigger("AttackOneHand");
+            }
         }
+    }
+
+    private void RotateTowardsPlayer()
+    {
+        gameObject.transform.LookAt(new Vector3(player.transform.position.x, 0f, player.transform.position.z));
     }
 
     private void OnTriggerEnter(Collider other)
