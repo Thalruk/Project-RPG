@@ -26,8 +26,6 @@ public class ContainerInteractable : Interactable
             ItemContainer itemContainer = Instantiate(WorldSettings.Instance.itemContainer, point, Quaternion.identity).GetComponent<ItemContainer>();
             itemContainer.item = item;
             itemContainer.UpdateMesh();
-            Debug.Log("container");
-
         }
 
         GetComponent<CapsuleCollider>().enabled = false;

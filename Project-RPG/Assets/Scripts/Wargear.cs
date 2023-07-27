@@ -32,11 +32,11 @@ public class Wargear
             weapon = (Weapon)item;
         }
 
-        //foreach (ItemEffect effect in item.Effects)
-        //{
-        //    actualEffects.Add(effect);
-        //}
-        //ApplyEffects();
+        foreach (ItemEffect effect in item.Effects)
+        {
+            actualEffects.Add(effect);
+        }
+        ApplyEffects();
     }
 
     public void Dequip(WargearItem item)
