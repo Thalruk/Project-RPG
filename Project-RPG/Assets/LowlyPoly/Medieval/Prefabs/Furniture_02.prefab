@@ -118,9 +118,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36b380d32d2b3404eb1d8b574452f9b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health:
+  Health:
     maxValue:
-      baseValue: 50
+      baseValue: 60
       statModifiers: []
     currentValue: 0
     regenValue:
