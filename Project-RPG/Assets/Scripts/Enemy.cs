@@ -1,17 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float detectionRadius;
+    NavMeshAgent agent;
+    SphereCollider sphereCollider;
+
+    private void Awake()
     {
-        
+        agent = GetComponent<NavMeshAgent>();
+        sphereCollider = GetComponent<SphereCollider>();
+        sphereCollider.radius = detectionRadius;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
         
     }

@@ -903,6 +903,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7808288678208459731, guid: 52ac8c7803962294a86710d722ad9828, type: 3}
       insertIndex: -1
       addedObject: {fileID: 789879283}
+    - targetCorrespondingSourceObject: {fileID: 7808288678208459731, guid: 52ac8c7803962294a86710d722ad9828, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 789879284}
   m_SourcePrefab: {fileID: 100100000, guid: 52ac8c7803962294a86710d722ad9828, type: 3}
 --- !u!1 &190495510
 GameObject:
@@ -2643,6 +2646,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64f2306465e02448df5d0c24c1be90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  detectionRadius: 0
+--- !u!195 &789879284
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789879281}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.42
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.79
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!95 &812527067 stripped
 Animator:
   m_CorrespondingSourceObject: {fileID: 332113292061748315, guid: ba308a17258ee0840a2784cc0028d666, type: 3}
