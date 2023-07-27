@@ -17,6 +17,10 @@ public class WeaponHitter : MonoBehaviour
                 {
                     target.TakeDamage(WargearManager.Instance.wargear.weapon.damage);
                 }
+                if(other.TryGetComponent<Enemy>(out Enemy enemy))
+                {
+                    enemy.TakeDamage(WargearManager.Instance.wargear.weapon.damage);
+                }
             }
         }
         else

@@ -49,29 +49,36 @@ public class Enemy : Creature
 
     private void Move()
     {
-        if (player != null)
+        if(Health.CurrentValue > 0)
         {
-            RotateTowardsPlayer();
-            directionToPlayer = (player.transform.position - transform.position);
-            distance = directionToPlayer.magnitude;
-
-            if (distance <= chaseRadius && distance > attackRadius)
+            if (player != null)
             {
-                agent.isStopped = false;
-                agent.destination = player.transform.position - directionToPlayer.normalized * 0.9f * attackRadius;
-                anim.SetFloat("Speed", 1);
+                //RotateTowardsPlayer();
+                directionToPlayer = (player.transform.position - transform.position);
+                distance = directionToPlayer.magnitude;
+
+                if (distance <= chaseRadius && distance > attackRadius)
+                {
+                    agent.isStopped = false;
+                    agent.destination = player.transform.position - directionToPlayer.normalized * 0.9f * attackRadius;
+                    anim.SetFloat("Speed", 1);
+                }
+                else if (distance <= attackRadius)
+                {
+                    agent.isStopped = true;
+                    anim.SetFloat("Speed", 0);
+                    anim.SetTrigger("AttackOneHand");
+                }
             }
-            else if (distance <= attackRadius)
+            else
             {
                 agent.isStopped = true;
                 anim.SetFloat("Speed", 0);
-                anim.SetTrigger("AttackOneHand");
             }
         }
         else
         {
             agent.isStopped = true;
-            anim.SetFloat("Speed", 0);
         }
     }
 
@@ -106,6 +113,10 @@ public class Enemy : Creature
     {
         base.TakeDamage(value);
         UpdateHealthSlider();
+        if(Health.CurrentValue == 0)
+        {
+            anim.SetTrigger("Dead");
+        }
     }
 
     private void OnDrawGizmos()

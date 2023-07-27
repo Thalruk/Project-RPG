@@ -5,6 +5,7 @@ using UnityEngine;
 public class AnimationAudioEvent : MonoBehaviour
 {
     AudioSource audioSource;
+    [SerializeField] GameObject objectToDestroy;
 
     private void Awake()
     {
@@ -13,5 +14,10 @@ public class AnimationAudioEvent : MonoBehaviour
     public void PlaySound()
     {
         audioSource.Play();
+    }
+
+    public void OnDie()
+    {
+        Destroy(objectToDestroy);
     }
 }
