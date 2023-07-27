@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: greatsword
   Description: standard greatsword
-  Sprite: {fileID: 21300000, guid: 52b77c07ded456f49a3222f51c5fe926, type: 3}
+  Sprite: {fileID: 21300000, guid: a532a7b13e1c75f49a8a909d3fec1848, type: 3}
   Mesh: {fileID: -2490357807671972370, guid: d00dec123be83b445adbe6c8f3f02f41, type: 3}
   Materials:
   - {fileID: 2100000, guid: 49c61f7d98b36a6438e5deb41f0f7207, type: 2}
