@@ -36,32 +36,18 @@ public class ItemSlot : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, 
         }
         else
         {
-            switch (item.Rarity)
+            Background.sprite = item.Rarity switch
             {
-                case Rarity.Common:
-                    Background.sprite = commonBackground;
-                    break;
-                case Rarity.Uncommon:
-                    Background.sprite = uncommonBackground;
-                    break;
-                case Rarity.Rare:
-                    Background.sprite = rareBackground;
-                    break;
-                case Rarity.Legendary:
-                    Background.sprite = legendaryBackground;
-                    break;
-                case Rarity.Magical:
-                    Background.sprite = magicalBackground;
-                    break;
-                case Rarity.Angelic:
-                    Background.sprite = angelicBackground;
-                    break;
-                case Rarity.Demonic:
-                    Background.sprite = demonicBackground;
-                    break;
-                default:
-                    break;
-            }
+                Rarity.Common => commonBackground,
+                Rarity.Uncommon => uncommonBackground,
+                Rarity.Rare => rareBackground,
+                Rarity.Legendary => legendaryBackground,
+                Rarity.Magical => magicalBackground,
+                Rarity.Angelic => angelicBackground,
+                Rarity.Demonic => demonicBackground,
+                _ => null
+            };
+
             image.enabled = true;
             image.sprite = item.Sprite;
         }
