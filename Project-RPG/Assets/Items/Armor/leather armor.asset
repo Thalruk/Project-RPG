@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: leather armor
   Description: normal armor
-  Sprite: {fileID: 21300000, guid: 432c58251af00414ea12b11f324aa0ca, type: 3}
-  Mesh: {fileID: 2752788004724228794, guid: 5cac7ad8464f8e944b859c007daf9617, type: 3}
+  Sprite: {fileID: 21300000, guid: 57b008dc4a9563445948ed2283261b4a, type: 3}
+  Mesh: {fileID: -7575218982966284274, guid: de13a7420582ded45a8d7d3f96889aca, type: 3}
   Materials: []
   Rarity: 0
   Effects:

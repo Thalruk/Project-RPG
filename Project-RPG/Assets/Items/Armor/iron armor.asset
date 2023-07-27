@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: iron armor
   Description: heavy iron armor
-  Sprite: {fileID: 21300000, guid: 432c58251af00414ea12b11f324aa0ca, type: 3}
-  Mesh: {fileID: -7575218982966284274, guid: de13a7420582ded45a8d7d3f96889aca, type: 3}
+  Sprite: {fileID: 21300000, guid: f2ade227037d5044aae70366f7574372, type: 3}
+  Mesh: {fileID: -5919009186684979959, guid: 10399581d9d41a44bb8984ec628263dd, type: 3}
   Materials: []
   Rarity: 0
   Effects:
