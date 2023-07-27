@@ -13,11 +13,11 @@ public class TargetDummy : Target
 
     private void Awake()
     {
-        health.CurrentValue = health.maxValue.Value;
+        Health.CurrentValue = Health.maxValue.Value;
         anim = GetComponent<Animator>();
 
-        healthSlider.maxValue = health.maxValue.Value;
-        healthSlider.value = health.CurrentValue;
+        healthSlider.maxValue = Health.maxValue.Value;
+        healthSlider.value = Health.CurrentValue;
     }
 
     private void Update()
@@ -28,11 +28,11 @@ public class TargetDummy : Target
     public override void TakeDamage(int damage)
     {
         anim.SetTrigger("Attacked");
-        health.Decrease(damage);
+        Health.Decrease(damage);
 
         UpdateHealtSlider();
 
-        if (health.CurrentValue == 0)
+        if (Health.CurrentValue == 0)
         {
             anim.SetTrigger("Died");
         }
@@ -40,9 +40,9 @@ public class TargetDummy : Target
 
     private void UpdateHealtSlider()
     {
-        healthSlider.value = health.CurrentValue;
-        healthSliderFill.color = Color.Lerp(Color.red, Color.black, (health.maxValue.Value - health.CurrentValue) / (float)health.maxValue.Value);
-        Debug.Log((health.maxValue.Value - health.CurrentValue) / (float)health.maxValue.Value);
+        healthSlider.value = Health.CurrentValue;
+        healthSliderFill.color = Color.Lerp(Color.red, Color.black, (Health.maxValue.Value - Health.CurrentValue) / (float)Health.maxValue.Value);
+        Debug.Log((Health.maxValue.Value - Health.CurrentValue) / (float)Health.maxValue.Value);
     }
 
     public void OnDeath()

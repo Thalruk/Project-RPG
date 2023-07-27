@@ -4,20 +4,18 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public ChangeableStat health;
+    public ChangeableStat Health;
 
     private void Awake()
     {
-        health.CurrentValue = health.maxValue.Value;
+        Health.CurrentValue = Health.maxValue.Value;
     }
 
     public virtual void TakeDamage(int damage)
     {
+        Health.Decrease(damage);
 
-        Debug.Log("is being attacked");
-        health.Decrease(damage);
-
-        if(health.CurrentValue == 0 )
+        if(Health.CurrentValue == 0 )
         {
             Destroy(gameObject);
         }

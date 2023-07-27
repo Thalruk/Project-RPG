@@ -31,6 +31,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private bool isJumping;
     [SerializeField] private bool isFalling;
 
+    AudioSource audio;
+
     private void Awake()
     {
         if (Instance != null && Instance != this)
@@ -42,6 +44,8 @@ public class PlayerMovement : MonoBehaviour
         player = GetComponent<Player>();
         characterController = GetComponent<CharacterController>();
         cam = Camera.main;
+
+        audio = GetComponent<AudioSource>();
     }
 
     private void Update()
@@ -141,5 +145,10 @@ public class PlayerMovement : MonoBehaviour
                     break;
             }
         }
+    }
+
+    public void AttackSound()
+    {
+        audio.Play();
     }
 }

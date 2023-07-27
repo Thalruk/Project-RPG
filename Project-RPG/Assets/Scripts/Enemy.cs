@@ -4,8 +4,9 @@ using System.Reflection;
 using Unity.IO.LowLevel.Unsafe;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : Creature
 {
     [SerializeField] private float detectionRadius;
     [SerializeField] private float chaseRadius;
@@ -19,6 +20,11 @@ public class Enemy : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] private SphereCollider sphereCollider;
 
+    [SerializeField] Slider healthSlider;
+    [SerializeField] Image healthSliderFill;
+
+    [SerializeField] Vector3 healtSliderOffset;
+
     [Header("Equipment")]
     public Weapon weapon;
 
@@ -27,11 +33,18 @@ public class Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         sphereCollider.radius = detectionRadius;
         agent.updateRotation = false;
+
+        Health.CurrentValue = Health.maxValue.Value;
+
+        healthSlider.maxValue = Health.maxValue.Value;
+        healthSlider.value = Health.CurrentValue;
     }
 
     private void Update()
     {
         Move();
+        healthSlider.transform.rotation = Camera.main.transform.rotation;
+        healthSlider.transform.position = transform.position + healtSliderOffset;
     }
 
     private void Move()
@@ -62,30 +75,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void HandleAnimation()
-    {
-        if (distance <= chaseRadius && distance > attackRadius)
-        {
-            if (agent.isStopped)
-            {
-                anim.SetFloat("Speed", 0);
-            }
-            else
-            {
-                anim.SetFloat("Speed", 1);
-            }
-        }
-
-        if (player != null)
-        {
-            if (distance <= attackRadius)
-            {
-                anim.SetFloat("Speed", 0);
-                anim.SetTrigger("AttackOneHand");
-            }
-        }
-    }
-
     private void RotateTowardsPlayer()
     {
         gameObject.transform.LookAt(new Vector3(player.transform.position.x, 0f, player.transform.position.z));
@@ -105,6 +94,18 @@ public class Enemy : MonoBehaviour
         {
             player = null;
         }
+    }
+
+    private void UpdateHealthSlider()
+    {
+        healthSlider.value = Health.CurrentValue;
+        healthSliderFill.color = Color.Lerp(Color.red, Color.black, (Health.maxValue.Value - Health.CurrentValue) / (float)Health.maxValue.Value);
+
+    }
+    public override void TakeDamage(int value)
+    {
+        base.TakeDamage(value);
+        UpdateHealthSlider();
     }
 
     private void OnDrawGizmos()

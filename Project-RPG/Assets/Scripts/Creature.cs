@@ -9,12 +9,12 @@ public class Creature : MonoBehaviour
     [SerializeField] public ChangeableStat Mana;
     [SerializeField] public ChangeableStat Stamina;
 
-    public void TakeDamage(int value)
+    public virtual void TakeDamage(int value)
     {
         Health.Decrease(value);
     }
 
-    public void Heal(int value)
+    public virtual void Heal(int value)
     {
         Health.Increase(value);
     }

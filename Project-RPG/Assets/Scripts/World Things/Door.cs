@@ -6,6 +6,7 @@ public class Door : MonoBehaviour
 {
     public bool isOpen = false;
     Animator anim;
+    AudioSource source;
 
     private void Awake()
     {
@@ -16,6 +17,7 @@ public class Door : MonoBehaviour
     {
         Debug.Log("AAAAAAA");
         isOpen = !isOpen;
+        source.Play();
         anim.SetTrigger("ChangeState");
     }
 }
