@@ -2649,10 +2649,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a64f2306465e02448df5d0c24c1be90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 5
-  chaseRadius: 2
-  attackRadius: 1
+  detectionRadius: 7
+  chaseRadius: 5
+  attackRadius: 2
   player: {fileID: 0}
+  anim: {fileID: 2105852620}
   sphereCollider: {fileID: 789879285}
 --- !u!195 &789879284
 NavMeshAgent:
@@ -2665,9 +2666,9 @@ NavMeshAgent:
   m_AgentTypeID: 0
   m_Radius: 0.42
   m_Speed: 5
-  m_Acceleration: 8
+  m_Acceleration: 5
   avoidancePriority: 50
-  m_AngularSpeed: 240
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -8092,6 +8093,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!95 &2105852620 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4769834963169610261, guid: 52ac8c7803962294a86710d722ad9828, type: 3}
+  m_PrefabInstance: {fileID: 181750674}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2120869307
 GameObject:
   m_ObjectHideFlags: 3

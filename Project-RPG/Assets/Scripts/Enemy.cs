@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject player;
 
     NavMeshAgent agent;
+    [SerializeField] Animator anim;
     [SerializeField] private SphereCollider sphereCollider;
 
     private void Awake()
@@ -22,15 +23,49 @@ public class Enemy : MonoBehaviour
 
     private void Update()
     {
-        if(player != null)
+        Move();
+        //HandleAnimation();
+    }
+
+    private void Move()
+    {
+        if (player != null)
         {
-            agent.destination = player.transform.position;
+            Vector3 direction = (player.transform.position - transform.position);
+            float distane = direction.magnitude;
+
+            if (distane <= chaseRadius && distane > attackRadius)
+            {
+                Debug.Log("moving to player");
+                agent.isStopped = false;
+                agent.destination = player.transform.position - direction.normalized * attackRadius;
+            }
+            else if (distane <= attackRadius)
+            {
+                Debug.Log("attacking player");
+
+                agent.isStopped = true;
+            }
+        }
+
+        Debug.Log(agent.isStopped);
+    }
+
+    private void HandleAnimation()
+    {
+        if (agent.isStopped)
+        {
+            anim.SetFloat("Speed", 0);
+        }
+        else
+        {
+            anim.SetFloat("Speed", 1);
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
             player = other.gameObject;
         }
