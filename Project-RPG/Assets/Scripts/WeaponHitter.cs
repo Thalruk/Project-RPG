@@ -6,7 +6,6 @@ public class WeaponHitter : MonoBehaviour
 {
     public bool isOnPlayer = true;
     public Enemy enemy;
-    public Player player;
     private void OnTriggerEnter(Collider other)
     {
         if (isOnPlayer)
@@ -27,7 +26,10 @@ public class WeaponHitter : MonoBehaviour
         {
             if (other.tag == "Player")
             {
-                player.TakeDamage(enemy.weapon.damage);
+                if (other.TryGetComponent<Player>(out Player player))
+                {
+                    player.TakeDamage(enemy.weapon.damage);
+                }
             }
         }
     }

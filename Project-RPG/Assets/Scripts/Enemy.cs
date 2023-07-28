@@ -53,7 +53,7 @@ public class Enemy : Creature
         {
             if (player != null)
             {
-                //RotateTowardsPlayer();
+                RotateTowardsPlayer();
                 directionToPlayer = (player.transform.position - transform.position);
                 distance = directionToPlayer.magnitude;
 
@@ -84,7 +84,7 @@ public class Enemy : Creature
 
     private void RotateTowardsPlayer()
     {
-        gameObject.transform.LookAt(new Vector3(player.transform.position.x, 0f, player.transform.position.z));
+        gameObject.transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
     }
 
     private void OnTriggerEnter(Collider other)

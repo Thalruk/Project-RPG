@@ -589,7 +589,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health:
     maxValue:
-      baseValue: 0
+      baseValue: 100
       statModifiers: []
     currentValue: 0
     regenValue:
